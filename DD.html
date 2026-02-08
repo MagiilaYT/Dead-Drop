@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drop Dead</title>
+    <title>Drop Dead V6.1</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
@@ -552,6 +552,161 @@
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+
+        /* Music specific styles */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1rem;
+        }
+
+        .music-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: block;
+        }
+
+        .music-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+
+        .music-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .music-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .music-title {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .music-meta {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        .music-url {
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            word-break: break-all;
+            opacity: 0.9;
+            font-family: 'Courier New', monospace;
+            position: relative;
+            z-index: 1;
+        }
+
+        .music-card:hover .music-url {
+            color: var(--primary);
+            opacity: 1;
+        }
+
+        /* AI section styles */
+        .ai-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .ai-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.25rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: block;
+        }
+
+        .ai-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-green), var(--primary));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+
+        .ai-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-green);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .ai-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .ai-title {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-title i {
+            color: var(--accent-green);
+        }
+
+        .ai-url {
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            word-break: break-all;
+            opacity: 0.9;
+            font-family: 'Courier New', monospace;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-card:hover .ai-url {
+            color: var(--accent-green);
+            opacity: 1;
         }
 
         /* Movie Grid */
@@ -1116,7 +1271,7 @@
     <div class="particles" id="particles"></div>
 
     <!-- Main App -->
-    <div class="app-container" id="appContainer">
+    <div class="app-container" id="appContainer"> 
         <!-- Sidebar -->
         <nav class="nav-container">
             <div class="nav-logo" id="navLogo" title="Drop Dead - Home">
@@ -1248,7 +1403,9 @@
             sections: [
                 { id: 'home', name: 'Home', icon: 'ri-home-4-line' },
                 { id: 'movies', name: 'Movies', icon: 'ri-movie-2-line' },
-                { id: 'sites', name: 'Sites', icon: 'ri-links-line' }
+                { id: 'sites', name: 'Sites', icon: 'ri-links-line' },
+                { id: 'music', name: 'Music', icon: 'ri-music-2-line' },
+                { id: 'ai', name: 'AI 101', icon: 'ri-brain-line' }
             ]
         };
 
@@ -1339,19 +1496,25 @@
                 case 'sites':
                     renderSites(container);
                     break;
+                case 'music':
+                    renderMusic(container);
+                    break;
+                case 'ai':
+                    renderAI(container);
+                    break;
             }
         }
 
         function renderHome(container) {
             container.innerHTML = 
                 '<div class="section-header">' +
-                    '<div class="version-badge">Drop Dead Edition</div>' +
+                    '<div class="version-badge">Drop Dead V6.1</div>' +
                     '<h2><i class="ri-home-4-line"></i> Welcome to Drop Dead</h2>' +
-                    '<p class="section-desc">Made by a person for people for some reason.</p>' +
+                    '<p class="section-desc">Made by a person for people for some reason while watching family guy.</p>' +
                 '</div>' +
                 '<div class="updates">' +
-                    '<h3><i class="ri-flashlight-line"></i> Latest Updates</h3>' +
-                    '<div class="update-item feature">Renamed from ByteMePlz to Drop Dead IDK why</div>' +
+                    '<h3><i class="ri-flashlight-line"></i>Updates</h3>' +
+                    '<div class="update-item feature">Originally named ByteMePlz</div>' +
                     '<div class="update-item">V6.1: Removed ad blocker & fixed sites display</div>' +
                     '<div class="update-item">V6: Cinema Mode with integrated player</div>' +
                     '<div class="update-item">V5: Added Bogge.tv search integration</div>' +
@@ -1359,6 +1522,7 @@
                     '<div class="update-item">V3: Added AI cheating 101</div>' +
                     '<div class="update-item">V2: Added movies and music</div>' +
                     '<div class="update-item">V1: Added known and unknown site</div>' +
+                    
                 '</div>' +
                 '<div class="category">' +
                     '<div class="category-header">' +
@@ -1375,6 +1539,16 @@
                             '<div class="link-title"><i class="ri-gamepad-line"></i> Game Sites</div>' +
                             '<div class="link-url">All known and unknown sites</div>' +
                             '<div class="link-note">Curated collection of working proxies</div>' +
+                        '</div>' +
+                        '<div class="link-card nav-to-music">' +
+                            '<div class="link-title"><i class="ri-music-2-line accent-pink"></i> Music</div>' +
+                            '<div class="link-url">Kanye West & Tyler unreleased</div>' +
+                            '<div class="link-note">Major albums and archives</div>' +
+                        '</div>' +
+                        '<div class="link-card nav-to-ai">' +
+                            '<div class="link-title"><i class="ri-brain-line accent-green"></i> AI 101</div>' +
+                            '<div class="link-url">AI tools & humanizers</div>' +
+                            '<div class="link-note">For educational purposes</div>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -1399,6 +1573,8 @@
             
             container.querySelector('.nav-to-movies').addEventListener('click', function() { showSection('movies'); });
             container.querySelector('.nav-to-sites').addEventListener('click', function() { showSection('sites'); });
+            container.querySelector('.nav-to-music').addEventListener('click', function() { showSection('music'); });
+            container.querySelector('.nav-to-ai').addEventListener('click', function() { showSection('ai'); });
         }
 
         // ============================================
@@ -1708,12 +1884,11 @@
         }
 
         // ============================================
-        // SITES SECTION - ORIGINAL THEME NAMES, URLS IN BLUE TEXT
+        // SITES SECTION
         // ============================================
 
         function createLink(title, url, description, note) {
             note = note || '';
-            // Showing URL in the blue text instead of description
             return '<a class="link-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
                     '<div class="link-title">' + title + '</div>' +
                     '<div class="link-url">' + url + '</div>' +
@@ -1722,7 +1897,6 @@
         }
 
         function createSubcategory(name) {
-            // Original theme names
             return '<div class="subcategory"><i class="ri-folder-3-line"></i> ' + name + '</div>';
         }
 
@@ -1730,13 +1904,13 @@
             var html = 
                 '<div class="section-header">' +
                     '<h2><i class="ri-links-line"></i> All Game Sites</h2>' +
-                    '<p class="section-desc">Complete collection of known and unknown sites. Underground = more likely to work.</p>' +
+                    '<p class="section-desc">Complete collection of known and unknown sites.</p>' +
                 '</div>' +
                 
                 '<div class="category">' +
                     '<div class="category-header">' +
                         '<div class="category-icon"><i class="ri-gamepad-line cat-icon-white"></i></div>' +
-                        '<h3>Popular Gaming Sites</h3>' +
+                        '<h3>Popular Sites</h3>' +
                     '</div>' +
                     '<div class="link-grid">' +
                         createLink('Now.gg', 'https://now.gg/', 'Cloud gaming platform') +
@@ -1750,7 +1924,7 @@
                 '<div class="category">' +
                     '<div class="category-header">' +
                         '<div class="category-icon cat-gradient-orange-red"><i class="ri-spy-line cat-icon-white"></i></div>' +
-                        '<h3>Underground Sites</h3>' +
+                        '<h3>UnKnown Sites</h3>' +
                         '<span class="category-subtitle">Lesser known = more likely to work</span>' +
                     '</div>' +
                     
@@ -1929,6 +2103,135 @@
                 '</div>';
             
             container.innerHTML = html;
+        }
+
+        // ============================================
+        // MUSIC SECTION
+        // ============================================
+
+        function createMusicCard(title, tracks, duration, url) {
+            return '<a class="music-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
+                    '<div class="music-title"><i class="ri-album-fill accent-pink"></i> ' + title + '</div>' +
+                    '<div class="music-meta">' + tracks + ' | ' + duration + '</div>' +
+                    '<div class="music-url">' + url + '</div>' +
+                '</a>';
+        }
+
+        function renderMusic(container) {
+            container.innerHTML = 
+                '<div class="section-header">' +
+                    '<h2><i class="ri-music-2-line"></i> Music</h2>' +
+                    '<p class="section-desc">Unreleased albums and archives.</p>' +
+                '</div>' +
+                
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon cat-gradient-2"><i class="ri-user-voice-line cat-icon-white"></i></div>' +
+                        '<h3>KANYE WEST Major Unreleased Albums</h3>' +
+                    '</div>' +
+                    '<div class="music-grid">' +
+                        createMusicCard('YANDHI', '31 tracks', '1h 50m', 'https://untitled.stream/library/project/LR94pKICudarIIsoKE43Q') +
+                        createMusicCard('DONDA 2: FOR MAMA', '39 tracks', '2h 3m', 'https://untitled.stream/library/project/SxhcFIlbTSTtBAKJbUdiQ') +
+                        createMusicCard('DONDA 2.0', '25 tracks', '2h 12s', 'https://untitled.stream/library/project/IzifbXVhUjA9uo2rM9XLP') +
+                        createMusicCard('DONDA 3', '18 tracks', '1h 3m', 'https://untitled.stream/library/project/X3PTFiYaNADrj5Fvcspyz') +
+                        createMusicCard('BULLY', '16 tracks', '52m 3s', 'https://untitled.stream/library/project/YK4Rl9CwHviaZ8wewr1sw') +
+                        createMusicCard('YEPHORIA', '17 tracks', '1h 17m', 'https://untitled.stream/library/project/JdQTAbufCUGRp9hOlXgkK') +
+                        createMusicCard('JESUS IS EVERYTHING', '24 tracks', '1h 38m', 'https://untitled.stream/library/project/2prAs3il0Fo2NeIwyv9oK') +
+                        createMusicCard('TRUE PROPHETS', '16 tracks', '1h 44m', 'https://untitled.stream/library/project/l3wckbUigGGC4Id1GapgY') +
+                        createMusicCard('SAVE ME GOD', '15 tracks', '52m 53s', 'https://untitled.stream/library/project/90p9s5Y8uneuqVrPGNDAM') +
+                        createMusicCard('YEEZUS 2', '13 tracks', '56m 52s', 'https://untitled.stream/library/project/GfJrB0KLLlr4N7rSxMssc') +
+                        createMusicCard('GOOD A JOB*', '18 tracks', '1h 19m', 'https://untitled.stream/library/project/sEJCgq1DEtUgGMNDxnbuA') +
+                        createMusicCard('SO HELP ME GOD', '10 tracks', '35m 39s', 'https://untitled.stream/library/project/kWehVkoYhtJ0aOVtZpDIg') +
+                        createMusicCard('WATCH THE FLAMES', '12 tracks', '51m 5s', 'https://untitled.stream/library/project/3kE7C4VCdSR2tfDQMMv18') +
+                        createMusicCard('WATCH THE THRONE 2', '11 tracks', '34m 25s', 'https://untitled.stream/library/project/2j7QPD656SnIGZ3SfchF3') +
+                        createMusicCard('ALL HALLOWS EVE DELUXE', '21 tracks', '1h 28m', 'https://untitled.stream/library/project/s18s1Nj0udxUvCQskxjnc') +
+                        createMusicCard('ALL HALLOWS EVE', '16 tracks', '1h 8m', 'https://untitled.stream/library/project/9kCmFKb3iWKF99cFMl2uz') +
+                        createMusicCard('MBDTF DELUXE', '25 tracks', '1h 45m', 'https://untitled.stream/library/project/VoxXW8iioQkfrpbqN5K0A') +
+                        createMusicCard('YE', '14 tracks', '44m 29s', 'https://untitled.stream/library/project/eCMQtVt5dKihqutHt85gQ') +
+                        createMusicCard('CARTI YE', '14 tracks', '34m 38s', 'https://untitled.stream/library/project/jZSHZHORLjhuSnZy3G0JA') +
+                        createMusicCard('YEBU', '14 tracks', '33m 47s', 'https://untitled.stream/library/project/t6eCBccrSbv7sdANzGMZ9') +
+                        createMusicCard('WAR', '10 tracks', '26m 53s', 'https://untitled.stream/library/project/gjLjksokuAyVRyZmXY4og') +
+                    '</div>' +
+                '</div>' +
+                
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon" style="background: linear-gradient(135deg, #ff6b6b, #ffd93b);"><i class="ri-folder-music-line cat-icon-white"></i></div>' +
+                        '<h3>Archive Folders</h3>' +
+                    '</div>' +
+                    '<div class="music-grid">' +
+                        createMusicCard('KANYE MEGATHREAD', 'Full archive', 'MEGA', 'https://mega.nz/folder/Y4A1mKRA#2BshAph7jOKavSew7rkaBQ') +
+                        createMusicCard('TYLER, THE CREATOR IGOR ALT VERSIONS', '12 tracks', '57m 5s', 'https://drive.google.com/drive/folders/1cdRnxfgnap4nQ4yq4Cw4pAiOXmOr9p0u') +
+                        createMusicCard('(OG) IGOR', '14 tracks', '1h 14m', 'https://untitled.stream/library/project/5V8BYQxpjoYR0HAMJIzmR') +
+                        createMusicCard('CMIYGL (OG)', '11 tracks', '1h 9m', 'https://untitled.stream/library/project/LnwXPmM0NUPvCKwPMUjsk') +
+                        createMusicCard('FLOWER BOY: THE OUTTAKES', '12 tracks', '28m 34s', 'https://untitled.stream/library/project/3KyKD3jANwaznTqImTVwn') +
+                        createMusicCard('TYLER FOLDER', '28 albums', 'Full Collection', 'https://untitled.stream/library/folder/sbybJSTQjv19a6CUheNAO') +
+                    '</div>' +
+                '</div>';
+        }
+
+        // ============================================
+        // AI 101 SECTION
+        // ============================================
+
+        function createAICard(title, url) {
+            return '<a class="ai-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
+                    '<div class="ai-title"><i class="ri-robot-2-line"></i> ' + title + '</div>' +
+                    '<div class="ai-url">' + url + '</div>' +
+                '</a>';
+        }
+
+        function renderAI(container) {
+            container.innerHTML = 
+                '<div class="section-header">' +
+                    '<h2><i class="ri-brain-line"></i> AI Cheating 101</h2>' +
+                    '<p class="section-desc">AI tools and humanizers.</p>' +
+                '</div>' +
+                
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon" style="background: linear-gradient(135deg, #00ff88, #00d4ff);"><i class="ri-robot-line cat-icon-white"></i></div>' +
+                        '<h3>AI Tools</h3>' +
+                    '</div>' +
+                    '<div class="ai-grid">' +
+                        createAICard('Kimi', 'https://www.kimi.com/') +
+                        createAICard('ChatGPT', 'https://chatgpt.com/') +
+                        createAICard('Perplexity', 'https://www.perplexity.ai/') +
+                        createAICard('Claude', 'https://claude.ai/login') +
+                        createAICard('Gemini', 'https://gemini.google.com/') +
+                        createAICard('Poe', 'https://poe.com/login?redirect_url=%2F') +
+                        createAICard('Photomath', 'https://photomath.com/') +
+                        createAICard('Mathway', 'https://www.mathway.com/Algebra') +
+                        createAICard('Symbolab', 'https://www.symbolab.com/') +
+                        createAICard('Chegg', 'https://www.chegg.com/') +
+                        createAICard('Course Hero', 'https://www.coursehero.com/') +
+                        createAICard('Brainly', 'https://brainly.com/') +
+                        createAICard('Wolfram Alpha', 'https://www.wolframalpha.com/') +
+                    '</div>' +
+                '</div>' +
+                
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon" style="background: linear-gradient(135deg, #ff6b9d, #c77dff);"><i class="ri-shield-user-line cat-icon-white"></i></div>' +
+                        '<h3>Humanizers</h3>' +
+                    '</div>' +
+                    '<div class="ai-grid">' +
+                        createAICard('Rewritify', 'https://rewritify.ai/') +
+                        createAICard('Humanize AI', 'https://humanize.ai/') +
+                        createAICard('HumanizeAI.com', 'https://humanizeai.com/') +
+                        createAICard('HumanizeAI Pro', 'https://www.humanizeai.pro/') +
+                        createAICard('AI Humanize', 'https://aihumanize.io/') +
+                        createAICard('Grammarly AI Humanizer', 'https://www.grammarly.com/ai-humanizer') +
+                        createAICard('HumanizeAI.io', 'https://www.humanizeai.io/') +
+                        createAICard('GPT Human', 'https://gpthuman.ai/') +
+                        createAICard('Un AI My Text', 'https://unaimytext.com/') +
+                        createAICard('Stealth Writer', 'https://stealthwriter.ai/') +
+                        createAICard('Undetectable AI Pro', 'https://www.undetectableai.pro/') +
+                        createAICard('Undetectable AI', 'https://undetectable.ai/ai-humanizer') +
+                        createAICard('My Detector AI', 'https://mydetector.ai/ai-humanizer/') +
+                        createAICard('Walter Writes', 'https://walterwrites.ai/') +
+                    '</div>' +
+                '</div>';
         }
 
         // ============================================
