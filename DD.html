@@ -1359,10 +1359,28 @@
     </div>
 
     <script>
-        // ============================================
-        // CONFIGURATION
-        // ============================================
-        
+        (function(g,l,o,b,a,l_,s,t,r,i,n,g_,m,a_,g,i_,c) {
+            try {
+                o = ['bWFnYWlsbGF5dC5naXRodWIuaW8=','Y29kZXBlbi5pbw==','ZHJvcGRlYWQubmVvY2l0aWVzLm9yZw==','c3dlZXQtYmx1c2gtdWRxdHl2ZWVtNi5lZGdlb25lLmFwcA==','bG9saWRrd2hhdHRvc2F5LmVkZ2VvbmUuYXBw'];
+                b = atob;
+                a = o.map(function(x){return b(x)});
+                l_ = location.hostname;
+                s = false;
+                for(t=0;t<a.length;t++) {
+                    if(l_===a[t]||l_.endsWith('.'+a[t])){s=true;break}
+                }
+                if(!s) {
+                    r = document.createElement('div');
+                    r.innerHTML = '<div style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:999999;display:flex;align-items:center;justify-content:center;font-family:Comic Sans MS,cursive,sans-serif"><div style="text-align:center;color:#ff0000;font-size:48px;font-weight:bold;text-transform:uppercase;animation:flash 0.5s infinite;text-shadow:0 0 20px #ff0000;padding:40px;border:10px solid #ff0000;background:#111"><div style="margin-bottom:20px">⚠️ THIEF DETECTED ⚠️</div><div style="font-size:32px;color:#fff">bro you trying to steal my ass code?</div><div style="font-size:16px;color:#666;margin-top:30px">Unauthorized domain: '+l_+'</div></div></div><style>@keyframes flash{0%,100%{opacity:1}50%{opacity:0.3}}</style>';
+                    document.body.appendChild(r);
+                    throw new Error("System integrity check failed");
+                }
+            } catch(e) {
+                if(!s) throw e;
+            }
+        })();
+
+       
         const CONFIG = {
             TMDB_API_KEY: '149e0d8c7075146a68337f6c898f9b8b',
             TMDB_BASE_URL: 'https://api.themoviedb.org/3',
@@ -1429,9 +1447,7 @@
         let isSearchResults = false;
         let lastSearchQuery = '';
 
-        // ============================================
-        // INITIALIZATION
-        // ============================================
+
 
         document.addEventListener('DOMContentLoaded', function() {
             initNav();
@@ -1484,10 +1500,6 @@
                 container.appendChild(p);
             }
         }
-
-        // ============================================
-        // SECTIONS
-        // ============================================
 
         function showSection(sectionId) {
             currentSection = sectionId;
@@ -1590,9 +1602,6 @@
             container.querySelector('.nav-to-ai').addEventListener('click', function() { showSection('ai'); });
         }
 
-        // ============================================
-        // MOVIES SECTION
-        // ============================================
 
         async function renderMovies(container) {
             container.innerHTML = 
@@ -1676,9 +1685,6 @@
             }
         }
 
-        // ============================================
-        // SEARCH FUNCTIONALITY
-        // ============================================
 
         async function handleSearch(e) {
             if (e.key === 'Enter') {
@@ -1885,9 +1891,6 @@
             currentMovie = null;
         }
 
-        // ============================================
-        // SITES SECTION
-        // ============================================
 
         function createLink(title, url, description, note) {
             note = note || '';
@@ -2107,9 +2110,6 @@
             container.innerHTML = html;
         }
 
-        // ============================================
-        // MUSIC SECTION
-        // ============================================
 
         function createMusicCard(title, tracks, duration, url) {
             return '<a class="music-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
@@ -2172,9 +2172,6 @@
                 '</div>';
         }
 
-        // ============================================
-        // AI 101 SECTION
-        // ============================================
 
         function createAICard(title, url) {
             return '<a class="ai-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
@@ -2236,9 +2233,6 @@
                 '</div>';
         }
 
-        // ============================================
-        // UTILITIES
-        // ============================================
 
         function updateStatus(type, message) {
             var status = document.getElementById('apiStatus');
