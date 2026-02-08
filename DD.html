@@ -1370,33 +1370,46 @@
             
             embedSources: [
                 { 
-                    name: 'VidSrc.cc', 
+                    name: 'VidSrcXyz', 
+                    type: 'direct', 
+                    url: 'https://vidsrc.xyz/embed/movie/', 
+                    icon: 'ri-movie-line',
+                    description: 'Fast streaming source'
+                },
+                { 
+                    name: 'AutoEmbed', 
+                    type: 'direct', 
+                    url: 'https://autoembed.co/movie/tmdb/', 
+                    icon: 'ri-flashlight-line',
+                    description: 'Auto-select quality'
+                },
+                { 
+                    name: 'VidSrcIcu', 
+                    type: 'direct', 
+                    url: 'https://vidsrc.icu/embed/movie/', 
+                    icon: 'ri-clapperboard-line',
+                    description: 'ICU streaming'
+                },
+                { 
+                    name: 'VidSrcCC (v2)', 
                     type: 'direct', 
                     url: 'https://vidsrc.cc/v2/embed/movie/', 
-                    icon: 'ri-film-line',
-                    description: 'Primary HD Stream'
+                    icon: 'ri-vidicon-line',
+                    description: 'CC v2 Server'
                 },
                 { 
-                    name: 'VidSrc.me', 
+                    name: 'VidLink Pro', 
                     type: 'direct', 
-                    url: 'https://vidsrc.me/embed/movie?tmdb=', 
-                    icon: 'ri-film-line',
-                    description: 'Backup Stream'
+                    url: 'https://vidlink.pro/movie/', 
+                    icon: 'ri-link',
+                    description: 'Pro streaming'
                 },
                 { 
-                    name: '2Embed', 
+                    name: 'Vidora', 
                     type: 'direct', 
-                    url: 'https://www.2embed.cc/embed/', 
-                    icon: 'ri-movie-line',
-                    description: 'Alternative Source'
-                },
-                { 
-                    name: 'Bogge.tv', 
-                    type: 'search', 
-                    url: 'https://bogge.tv/search/', 
-                    icon: 'ri-global-line',
-                    description: 'Search & Click to Watch',
-                    external: true
+                    url: 'https://vidora.su/embed/movie/', 
+                    icon: 'ri-movie-2-line',
+                    description: 'Vidora stream'
                 }
             ],
 
@@ -1515,7 +1528,7 @@
                 '<div class="updates">' +
                     '<h3><i class="ri-flashlight-line"></i>Updates</h3>' +
                     '<div class="update-item feature">Originally named ByteMePlz</div>' +
-                    '<div class="update-item">V6.1: Removed ad blocker & fixed sites display</div>' +
+                    '<div class="update-item">V6.1: Updated movie sources - 6 providers</div>' +
                     '<div class="update-item">V6: Cinema Mode with integrated player</div>' +
                     '<div class="update-item">V5: Added Bogge.tv search integration</div>' +
                     '<div class="update-item">V4: Added more unknown sites</div>' +
@@ -1533,7 +1546,7 @@
                         '<div class="link-card nav-to-movies">' +
                             '<div class="link-title"><i class="ri-movie-2-line"></i> Movies</div>' +
                             '<div class="link-url">Cinema Mode Enabled</div>' +
-                            '<div class="link-note">Watch with multiple sources</div>' +
+                            '<div class="link-note">Watch with 6 streaming sources</div>' +
                         '</div>' +
                         '<div class="link-card nav-to-sites">' +
                             '<div class="link-title"><i class="ri-gamepad-line"></i> Game Sites</div>' +
@@ -1565,7 +1578,7 @@
                         '</div>' +
                         '<div class="link-card">' +
                             '<div class="link-title"><i class="ri-switch-line accent-yellow"></i> Multi-Source</div>' +
-                            '<div class="link-url">4 streaming options</div>' +
+                            '<div class="link-url">6 streaming options</div>' +
                             '<div class="link-note">Switch sources without closing</div>' +
                         '</div>' +
                     '</div>' +
@@ -1585,7 +1598,7 @@
             container.innerHTML = 
                 '<div class="section-header">' +
                     '<h2><i class="ri-movie-2-line"></i> Popular Movies</h2>' +
-                    '<p class="section-desc">Click any movie to open in Cinema Mode.</p>' +
+                    '<p class="section-desc">Click any movie to open in Cinema Mode with 6 streaming sources.</p>' +
                 '</div>' +
                 '<div class="cards-grid" id="moviesGrid">' +
                     '<div class="loading-container">' +
@@ -1799,7 +1812,6 @@
                     '<div class="source-item ' + (i === currentSourceIndex ? 'active' : '') + '" data-source-index="' + i + '">' +
                         '<div class="source-name"><i class="' + source.icon + '"></i> ' + source.name + '</div>' +
                         '<div class="source-desc">' + source.description + '</div>' +
-                        (source.external ? '<div class="source-warning"><i class="ri-external-link-line"></i> Opens in new tab</div>' : '') +
                     '</div>';
             }
             list.innerHTML = html;
@@ -1821,16 +1833,6 @@
             var loader = document.getElementById('iframeLoader');
             
             renderSourceList();
-            
-            // Handle external sources (like Bogge.tv)
-            if (source.external) {
-                iframe.src = 'about:blank';
-                loader.classList.remove('active');
-                var searchQuery = encodeURIComponent(currentMovie.title.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-'));
-                var url = source.url + searchQuery;
-                window.open(url, '_blank');
-                return;
-            }
             
             loader.classList.add('active');
             
