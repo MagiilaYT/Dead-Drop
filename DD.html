@@ -1359,7 +1359,6 @@
     </div>
 
     <script>
-
         (function(g,l,o,b,a,l_,s,t,r,i,n,g_,m,a_,g,i_,c) {
             try {
                 // Allowed domains and paths - Base64 encoded
@@ -1374,9 +1373,9 @@
                 b = atob;
                 a = o.map(function(x){return b(x)});
                 l_ = location.hostname;
-                p_ = location.pathname;
-                f_ = l_ + p_;
-                s = false;
+                var p_ = location.pathname;
+                var f_ = l_ + p_;
+                var s = false;
                 
                 for(t=0;t<a.length;t++) {
                     // Check exact match or hostname match for root domains
@@ -1407,8 +1406,6 @@
             }
         })();
 
-    
-        
         const CONFIG = {
             TMDB_API_KEY: '149e0d8c7075146a68337f6c898f9b8b',
             TMDB_BASE_URL: 'https://api.themoviedb.org/3',
@@ -1475,8 +1472,6 @@
         let isSearchResults = false;
         let lastSearchQuery = '';
 
- 
-
         document.addEventListener('DOMContentLoaded', function() {
             initNav();
             initParticles();
@@ -1528,8 +1523,6 @@
                 container.appendChild(p);
             }
         }
-
-
 
         function showSection(sectionId) {
             currentSection = sectionId;
@@ -1631,8 +1624,6 @@
             container.querySelector('.nav-to-music').addEventListener('click', function() { showSection('music'); });
             container.querySelector('.nav-to-ai').addEventListener('click', function() { showSection('ai'); });
         }
-
-
 
         async function renderMovies(container) {
             container.innerHTML = 
@@ -1994,10 +1985,10 @@
                     
                     createSubcategory('Shadow Network') +
                     '<div class="link-grid">' +
-                        createLink('Shadow #1 (Doesn't load)', 'https://keenenglish.hotelconsuladoinn.com/', 'Hotel disguise') +
-                        createLink('Shadow #2 (Doesn't load)', 'https://rapidcalc.hotelconsuladoinn.com/', 'Calculator theme') +
-                        createLink('Shadow #3 (Doesn't load)', 'https://brightcoding.hotelconsuladoinn.com/', 'Coding theme') +
-                        createLink('Shadow #4 (Doesn't load)', 'https://mandarin.chinapoem.org/', 'Poetry disguise') +
+                        createLink('Shadow #1 (Does not load)', 'https://keenenglish.hotelconsuladoinn.com/', 'Hotel disguise') +
+                        createLink('Shadow #2 (Does not load)', 'https://rapidcalc.hotelconsuladoinn.com/', 'Calculator theme') +
+                        createLink('Shadow #3 (Does not load)', 'https://brightcoding.hotelconsuladoinn.com/', 'Coding theme') +
+                        createLink('Shadow #4 (Does not load)', 'https://mandarin.chinapoem.org/', 'Poetry disguise') +
                     '</div>' +
                     
                     createSubcategory('Selenite') +
