@@ -1660,15 +1660,15 @@
                 '<div class="section-header">' +
                     '<h2><i class="ri-search-line"></i> Search Results</h2>' +
                     '<div class="search-header">' +
-                        '<p class="search-info">Searching for: <span>\"' + escapeHtml(query) + '\"</span></p>' +
-                        '<button class="clear-search-btn\" id=\"clearSearchBtn\">' +
-                            '<i class=\"ri-close-line\"></i> Clear Search' +
+                        '<p class="search-info">Searching for: <span>"' + escapeHtml(query) + '"</span></p>' +
+                        '<button class="clear-search-btn" id="clearSearchBtn">' +
+                            '<i class="ri-close-line"></i> Clear Search' +
                         '</button>' +
                     '</div>' +
                 '</div>' +
-                '<div class=\"cards-grid\" id=\"moviesGrid\">' +
-                    '<div class=\"loading-container\">' +
-                        '<i class=\"ri-loader-4-line loading-spinner\"></i>' +
+                '<div class="cards-grid" id="moviesGrid">' +
+                    '<div class="loading-container">' +
+                        '<i class="ri-loader-4-line loading-spinner"></i>' +
                         '<p>Searching TMDB for movies...</p>' +
                     '</div>' +
                 '</div>';
@@ -1701,22 +1701,22 @@
                     updateStatus('active', 'Found ' + currentMovies.length + ' results');
                     
                     var header = container.querySelector('.section-header h2');
-                    header.innerHTML = '<i class=\"ri-search-line\"></i> Search Results (' + currentMovies.length + ' found)';
+                    header.innerHTML = '<i class="ri-search-line"></i> Search Results (' + currentMovies.length + ' found)';
                 } else {
                     document.getElementById('moviesGrid').innerHTML = 
-                        '<div class=\"error-container\">' +
-                            '<i class=\"ri-search-line error-icon\" style=\"color: var(--accent-yellow);\"></i>' +
-                            '<p style=\"color: var(--text); font-weight: 600; margin-bottom: 8px;\">No movies found</p>' +
-                            '<p>No results for \"' + escapeHtml(query) + '\". Try a different search term.</p>' +
+                        '<div class="error-container">' +
+                            '<i class="ri-search-line error-icon" style="color: var(--accent-yellow);"></i>' +
+                            '<p style="color: var(--text); font-weight: 600; margin-bottom: 8px;">No movies found</p>' +
+                            '<p>No results for "' + escapeHtml(query) + '". Try a different search term.</p>' +
                         '</div>';
                     updateStatus('active', 'No results');
                 }
             } catch (error) {
                 console.error('Search error:', error);
                 document.getElementById('moviesGrid').innerHTML = 
-                    '<div class=\"error-container\">' +
-                        '<i class=\"ri-error-warning-line error-icon\"></i>' +
-                        '<p style=\"color: var(--text); font-weight: 600; margin-bottom: 8px;\">Search failed</p>' +
+                    '<div class="error-container">' +
+                        '<i class="ri-error-warning-line error-icon"></i>' +
+                        '<p style="color: var(--text); font-weight: 600; margin-bottom: 8px;">Search failed</p>' +
                         '<p>Could not search TMDB. Check your connection.</p>' +
                     '</div>';
                 updateStatus('error', 'Search failed');
@@ -1748,9 +1748,9 @@
             document.getElementById('modalTitle').textContent = currentMovie.title;
             document.getElementById('modalPosterThumb').querySelector('img').src = currentMovie.image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
             document.getElementById('modalMeta').innerHTML = 
-                '<span><i class=\"ri-calendar-line\"></i> ' + currentMovie.year + '</span>' +
-                '<span><i class=\"ri-star-fill star-yellow\"></i> ' + currentMovie.rating + '/10</span>' +
-                '<span><i class=\"ri-movie-line\"></i> Cinema</span>';
+                '<span><i class="ri-calendar-line"></i> ' + currentMovie.year + '</span>' +
+                '<span><i class="ri-star-fill star-yellow"></i> ' + currentMovie.rating + '/10</span>' +
+                '<span><i class="ri-movie-line"></i> Cinema</span>';
             
             renderSourceList();
             loadSource(0);
@@ -1762,9 +1762,9 @@
             for (var i = 0; i < CONFIG.embedSources.length; i++) {
                 var source = CONFIG.embedSources[i];
                 html += 
-                    '<div class=\"source-item ' + (i === currentSourceIndex ? 'active' : '') + '\" data-source-index=\"' + i + '\">' +
-                        '<div class=\"source-name\"><i class=\"' + source.icon + '\"></i> ' + source.name + '</div>' +
-                        '<div class=\"source-desc\">' + source.description + '</div>' +
+                    '<div class="source-item ' + (i === currentSourceIndex ? 'active' : '') + '" data-source-index="' + i + '">' +
+                        '<div class="source-name"><i class="' + source.icon + '"></i> ' + source.name + '</div>' +
+                        '<div class="source-desc">' + source.description + '</div>' +
                     '</div>';
             }
             list.innerHTML = html;
@@ -1791,7 +1791,7 @@
             
             var url;
             if (source.type === 'search') {
-                var searchQuery = encodeURIComponent(currentMovie.title.toLowerCase().replace(/[^\\w\\s]/g, '').replace(/\\s+/g, '-'));
+                var searchQuery = encodeURIComponent(currentMovie.title.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-'));
                 url = source.url + searchQuery;
             } else {
                 url = source.url + currentMovie.id;
@@ -1813,7 +1813,7 @@
             var source = CONFIG.embedSources[currentSourceIndex];
             var url;
             if (source.type === 'search') {
-                var searchQuery = encodeURIComponent(currentMovie.title.toLowerCase().replace(/[^\\w\\s]/g, '').replace(/\\s+/g, '-'));
+                var searchQuery = encodeURIComponent(currentMovie.title.toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-'));
                 url = source.url + searchQuery;
             } else {
                 url = source.url + currentMovie.id;
@@ -1840,30 +1840,30 @@
 
         function createLink(title, url, description, note) {
             note = note || '';
-            return '<a class=\"link-card\" href=\"' + url + '\" target=\"_blank\" rel=\"noopener noreferrer\">' +
-                    '<div class=\"link-title\">' + title + '</div>' +
-                    '<div class=\"link-url\">' + url + '</div>' +
-                    (note ? '<div class=\"link-note\"><i class=\"ri-error-warning-line\"></i> ' + note + '</div>' : '') +
+            return '<a class="link-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
+                    '<div class="link-title">' + title + '</div>' +
+                    '<div class="link-url">' + url + '</div>' +
+                    (note ? '<div class="link-note"><i class="ri-error-warning-line"></i> ' + note + '</div>' : '') +
                 '</a>';
         }
 
         function createSubcategory(name) {
-            return '<div class=\"subcategory\"><i class=\"ri-folder-3-line\"></i> ' + name + '</div>';
+            return '<div class="subcategory"><i class="ri-folder-3-line"></i> ' + name + '</div>';
         }
 
         function renderSites(container) {
             var html = 
-                '<div class=\"section-header\">' +
-                    '<h2><i class=\"ri-links-line\"></i> All Game Sites</h2>' +
-                    '<p class=\"section-desc\">Complete collection of known and unknown sites.</p>' +
+                '<div class="section-header">' +
+                    '<h2><i class="ri-links-line"></i> All Game Sites</h2>' +
+                    '<p class="section-desc">Complete collection of known and unknown sites.</p>' +
                 '</div>' +
                 
-                '<div class=\"category\">' +
-                    '<div class=\"category-header\">' +
-                        '<div class=\"category-icon\"><i class=\"ri-gamepad-line cat-icon-white\"></i></div>' +
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon"><i class="ri-gamepad-line cat-icon-white"></i></div>' +
                         '<h3>Popular Sites</h3>' +
                     '</div>' +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Now.gg', 'https://now.gg/', 'Cloud gaming platform') +
                         createLink('Poki', 'https://poki.com/', 'Browser games collection') +
                         createLink('The Pizza Edition', 'https://thepizzaedition-games.github.io/', 'Curated game collection') +
@@ -1872,15 +1872,15 @@
                     '</div>' +
                 '</div>' +
                 
-                '<div class=\"category\">' +
-                    '<div class=\"category-header\">' +
-                        '<div class=\"category-icon cat-gradient-orange-red\"><i class=\"ri-spy-line cat-icon-white\"></i></div>' +
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon cat-gradient-orange-red"><i class="ri-spy-line cat-icon-white"></i></div>' +
                         '<h3>UnKnown Sites</h3>' +
-                        '<span class=\"category-subtitle\">Lesser known = more likely to work</span>' +
+                        '<span class="category-subtitle">Lesser known = more likely to work</span>' +
                     '</div>' +
                     
                     createSubcategory('Galaxy V6') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Galaxy #1', 'https://cspcn.cspcn.pt/onboarding/', 'CSP Onboarding') +
                         createLink('Galaxy #2', 'https://tracks.empleosonora.gob.mx/onboarding/', 'Empleos Sonora') +
                         createLink('Galaxy #3', 'https://policies.osiadaczabogados.cl/onboarding/', 'Osiadacz Abogados') +
@@ -1889,56 +1889,45 @@
                     '</div>' +
                     
                     createSubcategory('Quasar') +
-                    '<div class=\"link-grid\">' +
-                        createLink('Quasar #1', 'https://info.antipodeantarot.com/', 'Stealth gaming portal') +
-                        createLink('Quasar #2', 'https://harveyoaksbaptist.org/', 'Harvey Oaks Baptist') +
-                        createLink('Quasar #3', 'https://aifk29r89eieididjjejdo.chrisbaxmann.com/', 'Chris Baxmann') +
+                    '<div class="link-grid">' +
+                        createLink('Quasar #1', 'https://harveyoaksbaptist.org/', 'Harvey Oaks Baptist') +
+                        createLink('Quasar #2', 'https://aifk29r89eieididjjejdo.chrisbaxmann.com/', 'Chris Baxmann') +
                     '</div>' +
                     
                     createSubcategory('Void Network') +
-                    '<div class=\"link-grid\">' +
-                        createLink('Void Network V5 #1', 'https://cdn.waterloomath.com/', 'Math-themed proxy') +
-                        createLink('Void Network V5 #2', 'https://vcsa.void.apertura.com/', 'Void Apertura') +
-                        createLink('Void Network V5 #3', 'https://playernation.wanhuiarchitect.com/', 'Wanhui Architect') +
+                    '<div class="link-grid">' +
+                        createLink('Void Network V5 #1', 'https://vcsa.void.apertura.com/', 'Void Apertura') +
+                        createLink('Void Network V5 #2', 'https://playernation.wanhuiarchitect.com/', 'Wanhui Architect') +
                     '</div>' +
                     
                     createSubcategory('Ghost') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Ghost', 'https://need.helpforukraine.at/', 'Help-themed disguise') +
                     '</div>' +
                     
                     createSubcategory('Fern') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Fern', 'https://canvasbackpackstore.com/', 'Store-front proxy') +
                     '</div>' +
                     
                     createSubcategory('Frogies Arcade V4') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Frogies Arcade V4', 'https://larp.now/', 'LARP-themed games') +
                     '</div>' +
                     
                     createSubcategory('Axiom') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Axiom #1', 'https://brisk.bisblick.org/', 'Bisblick') +
                         createLink('Axiom #2', 'https://learningvcsa.fhoster.ru/', 'Fhoster') +
                     '</div>' +
                     
-                    createSubcategory('Shadow Network') +
-                    '<div class=\"link-grid\">' +
-                        createLink('Shadow #1 (Does not load)', 'https://keenenglish.hotelconsuladoinn.com/', 'Hotel disguise') +
-                        createLink('Shadow #2 (Does not load)', 'https://rapidcalc.hotelconsuladoinn.com/', 'Calculator theme') +
-                        createLink('Shadow #3 (Does not load)', 'https://brightcoding.hotelconsuladoinn.com/', 'Coding theme') +
-                        createLink('Shadow #4 (Does not load)', 'https://mandarin.chinapoem.org/', 'Poetry disguise') +
-                    '</div>' +
-                    
                     createSubcategory('Selenite') +
-                    '<div class=\"link-grid\">' +
-                        createLink('Selenite #1', 'https://tsisveryniche.tomayre.com/', 'Niche community portal') +
-                        createLink('Selenite #2', 'https://vcsa.churchinhuntsville.org/', 'Church in Huntsville') +
+                    '<div class="link-grid">' +
+                        createLink('Selenite', 'https://vcsa.churchinhuntsville.org/', 'Church in Huntsville') +
                     '</div>' +
                     
                     createSubcategory('HypeStudy') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('HypeStudy #1', 'https://english.jobvn.com/', 'Job portal disguise') +
                         createLink('HypeStudy #2', 'https://boeing.robbinsaviation.com/', 'Aviation disguise') +
                         createLink('HypeStudy #3', 'https://education-learning.tovamiasto.com/', 'Learning platform') +
@@ -1949,145 +1938,144 @@
                         createLink('HypeStudy #8', 'https://studywith-vcsa.ploteando.com/', 'Ploteando') +
                     '</div>' +
                     
-                    createSubcategory(\"Bigfoot's Game Shack\") +
-                    '<div class=\"link-grid\">' +
-                        createLink(\"Bigfoot's\", 'https://idyllic-choux-ce6d8a.netlify.app/g/', 'Netlify hosted') +
+                    createSubcategory("Bigfoot's Game Shack") +
+                    '<div class="link-grid">' +
+                        createLink("Bigfoot's", 'https://idyllic-choux-ce6d8a.netlify.app/g/', 'Netlify hosted') +
                     '</div>' +
                     
                     createSubcategory('Demon') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Demon', 'https://learn.turbo-education.com/', 'Turbo Education') +
                     '</div>' +
                     
                     createSubcategory('Vapor V4') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Vapor V4 #1', 'https://watervapor.space/', 'Atmospheric theme') +
                         createLink('Vapor V4 #2', 'https://education-live.com/', 'Live learning') +
                     '</div>' +
                     
                     createSubcategory('Dogeub') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Dogeub', 'https://jeanndunn.rdocart.com/', 'Jean Dunn Art') +
                     '</div>' +
                     
                     createSubcategory('Reds Exploit Center') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Reds #1', 'https://cheesestorecedarhurst.com/', 'Cheese store disguise') +
                         createLink('Reds #2', 'https://rs.gmsgroup.app/', 'Group app theme') +
                         createLink('Now.gg Mirror', 'https://nowgg.fun/apps/uncube/7074/now.html', 'Alternative now.gg') +
                     '</div>' +
                     
                     createSubcategory('Macro Games') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Macro Games', 'https://games.macrolorblx.com/', 'Roblox-themed') +
                     '</div>' +
                     
                     createSubcategory('Utopia') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Utopia #1', 'https://field.school.embeddedonline.org/', 'Field school theme') +
                         createLink('Utopia #2', 'https://debate.brain.maniel.one.pl/', 'Debate platform') +
                     '</div>' +
                     
                     createSubcategory('DayDream') +
-                    '<div class=\"link-grid\">' +
-                        createLink('DayDream #1', 'https://blog.artweb.website.cdn.cloudflare.net/', 'Art blog theme') +
-                        createLink('DayDream #2', 'https://dreams.centromariapolis.cl/', 'Dreams portal') +
-                        createLink('DayDream #3', 'https://daydreaming.realisation.org/', 'Realisation') +
+                    '<div class="link-grid">' +
+                        createLink('DayDream #1', 'https://dreams.centromariapolis.cl/', 'Dreams portal') +
+                        createLink('DayDream #2', 'https://daydreaming.realisation.org/', 'Realisation') +
                     '</div>' +
                     
                     createSubcategory('NautilusOS') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('NautilusOS', 'https://nautilus-os.vercel.app/', 'OS simulation') +
                     '</div>' +
                     
-                    createSubcategory(\"Jordan's Math Work V7\") +
-                    '<div class=\"link-grid\">' +
-                        createLink(\"Jordan's Math Work\", 'https://jmw.grandemass.tokeslaszlo.ro/', 'Grande Mass') +
+                    createSubcategory("Jordan's Math Work V7") +
+                    '<div class="link-grid">' +
+                        createLink("Jordan's Math Work", 'https://jmw.grandemass.tokeslaszlo.ro/', 'Grande Mass') +
                     '</div>' +
                     
                     createSubcategory('Xin Chao') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Xin Chao #1', 'https://kaw.edujose.org/', 'Edu Jose') +
                         createLink('Xin Chao #2', 'https://learn.litesa.com/', 'Litesa') +
                     '</div>' +
                     
                     createSubcategory('Boredom V2') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Boredom #1', 'https://get.hotelconsuladoinn.com/', 'Hotel Consulado') +
                         createLink('Boredom #2', 'https://vcsa.national-birdshow.com/', 'National Bird Show') +
                     '</div>' +
                     
                     createSubcategory('Overcloaked') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Overcloaked #1', 'https://lecturer.assignment.hybrid.dormitory.portal.felixrotaru.com/', 'Felix Rotaru') +
                         createLink('Overcloaked #2', 'https://funlearning.gatewaysuppliers.com.np/', 'Gateway Suppliers') +
                     '</div>' +
                     
                     createSubcategory('Shuttle') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Shuttle #1', 'http://classroomlearning.maxmirgidro.ru/', 'Max Mirgidro') +
                         createLink('Shuttle #2', 'http://wikipedialist.wikidelia.net/', 'Wikidelia') +
                     '</div>' +
                     
                     createSubcategory('Lunar') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Lunar', 'https://testing.suwal.com.np/', 'Suwal') +
                     '</div>' +
                     
                     createSubcategory('Truffled') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Truffled #1', 'https://hi.bergbahnen-bezau.at/', 'Bergbahnen Bezau') +
                         createLink('Truffled #2', 'https://computer.gryk.de/', 'Gryk') +
                     '</div>' +
                     
                     createSubcategory('Classroom 6X') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Classroom 6X', 'https://sites.google.com/view/classroom6x/', 'Google Sites') +
                     '</div>' +
                     
                     createSubcategory('Kazwire') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Kazwire #1', 'https://history.lodgegomantak.org/', 'History site') +
                         createLink('Kazwire #2', 'https://art.lexvoip.com/', 'Art portfolio') +
                     '</div>' +
                     
                     createSubcategory('Big Mac Heros') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Big Mac Heros', 'https://d2edvleactrkkb.cloudfront.net/', 'CDN hosted') +
                     '</div>' +
                     
                     createSubcategory('Roblox Unblocker') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Roblox #1', 'https://hotkitchenbag.com/', 'Kitchen theme') +
                         createLink('Roblox #2', 'https://websitesbridge.com/', 'Bridge theme') +
                         createLink('Roblox #3', 'https://nowgg.co/play/roblox-corporation/5349/roblox', 'Direct Roblox') +
                     '</div>' +
                     
                     createSubcategory('WebLFG') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('WebLFG #1', 'https://weblfg.onrender.com/', 'Render hosted') +
                         createLink('WebLFG #2', 'https://biochemistry.onrender.com/', 'Science theme') +
                     '</div>' +
                     
                     createSubcategory('Noodle Activities') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Noodle #1', 'https://googleclassroom.netlify.app/activities', 'Classroom theme') +
                         createLink('Noodle #2', 'https://billnye.netlify.app/activities', 'Science guy theme') +
                         createLink('Noodle #3', 'https://earnest-tarsier-3c02d1.netlify.app/activities', 'Animal theme') +
                     '</div>' +
                     
                     createSubcategory('Lioxryt') +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Lioxryt', 'https://lioxrytbackup.netlify.app/', 'Backup mirror') +
                     '</div>' +
                 '</div>' +
                 
-                '<div class=\"category\">' +
-                    '<div class=\"category-header\">' +
-                        '<div class=\"category-icon cat-gradient-purple-pink\"><i class=\"ri-archive-line cat-icon-white\"></i></div>' +
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon cat-gradient-purple-pink"><i class="ri-archive-line cat-icon-white"></i></div>' +
                         '<h3>Game Archives</h3>' +
                     '</div>' +
-                    '<div class=\"link-grid\">' +
+                    '<div class="link-grid">' +
                         createLink('Wolf Unblock', 'https://sites.google.com/view/wolfunblock/home', 'Comprehensive collection') +
                         createLink('Pizza Edition Archive', 'https://sites.google.com/view/pizzaedition/home', 'Original archive') +
                         createLink('Triple The Potatoes', 'https://sites.google.com/view/tripplethepotatoes/home', 'Potato theme') +
@@ -2099,26 +2087,26 @@
         }
 
         function createMusicCard(title, tracks, duration, url) {
-            return '<a class=\"music-card\" href=\"' + url + '\" target=\"_blank\" rel=\"noopener noreferrer\">' +
-                    '<div class=\"music-title\"><i class=\"ri-album-fill accent-pink\"></i> ' + title + '</div>' +
-                    '<div class=\"music-meta\">' + tracks + ' | ' + duration + '</div>' +
-                    '<div class=\"music-url\">' + url + '</div>' +
+            return '<a class="music-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
+                    '<div class="music-title"><i class="ri-album-fill accent-pink"></i> ' + title + '</div>' +
+                    '<div class="music-meta">' + tracks + ' | ' + duration + '</div>' +
+                    '<div class="music-url">' + url + '</div>' +
                 '</a>';
         }
 
         function renderMusic(container) {
             container.innerHTML = 
-                '<div class=\"section-header\">' +
-                    '<h2><i class=\"ri-music-2-line\"></i> Music</h2>' +
-                    '<p class=\"section-desc\">Unreleased albums and archives.</p>' +
+                '<div class="section-header">' +
+                    '<h2><i class="ri-music-2-line"></i> Music</h2>' +
+                    '<p class="section-desc">Unreleased albums and archives.</p>' +
                 '</div>' +
                 
-                '<div class=\"category\">' +
-                    '<div class=\"category-header\">' +
-                        '<div class=\"category-icon cat-gradient-2\"><i class=\"ri-user-voice-line cat-icon-white\"></i></div>' +
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon cat-gradient-2"><i class="ri-user-voice-line cat-icon-white"></i></div>' +
                         '<h3>KANYE WEST Major Unreleased Albums</h3>' +
                     '</div>' +
-                    '<div class=\"music-grid\">' +
+                    '<div class="music-grid">' +
                         createMusicCard('YANDHI', '31 tracks', '1h 50m', 'https://untitled.stream/library/project/LR94pKICudarIIsoKE43Q') +
                         createMusicCard('DONDA 2: FOR MAMA', '39 tracks', '2h 3m', 'https://untitled.stream/library/project/SxhcFIlbTSTtBAKJbUdiQ') +
                         createMusicCard('DONDA 2.0', '25 tracks', '2h 12s', 'https://untitled.stream/library/project/IzifbXVhUjA9uo2rM9XLP') +
@@ -2143,12 +2131,12 @@
                     '</div>' +
                 '</div>' +
                 
-                '<div class=\"category\">' +
-                    '<div class=\"category-header\">' +
-                        '<div class=\"category-icon\" style=\"background: linear-gradient(135deg, #ff6b6b, #ffd93b);\"><i class=\"ri-folder-music-line cat-icon-white\"></i></div>' +
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon" style="background: linear-gradient(135deg, #ff6b6b, #ffd93b);"><i class="ri-folder-music-line cat-icon-white"></i></div>' +
                         '<h3>Archive Folders</h3>' +
                     '</div>' +
-                    '<div class=\"music-grid\">' +
+                    '<div class="music-grid">' +
                         createMusicCard('KANYE MEGATHREAD', 'Full archive', 'MEGA', 'https://mega.nz/folder/Y4A1mKRA#2BshAph7jOKavSew7rkaBQ') +
                         createMusicCard('TYLER, THE CREATOR IGOR ALT VERSIONS', '12 tracks', '57m 5s', 'https://drive.google.com/drive/folders/1cdRnxfgnap4nQ4yq4Cw4pAiOXmOr9p0u') +
                         createMusicCard('(OG) IGOR', '14 tracks', '1h 14m', 'https://untitled.stream/library/project/5V8BYQxpjoYR0HAMJIzmR') +
@@ -2160,25 +2148,25 @@
         }
 
         function createAICard(title, url) {
-            return '<a class=\"ai-card\" href=\"' + url + '\" target=\"_blank\" rel=\"noopener noreferrer\">' +
-                    '<div class=\"ai-title\"><i class=\"ri-robot-2-line\"></i> ' + title + '</div>' +
-                    '<div class=\"ai-url\">' + url + '</div>' +
+            return '<a class="ai-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
+                    '<div class="ai-title"><i class="ri-robot-2-line"></i> ' + title + '</div>' +
+                    '<div class="ai-url">' + url + '</div>' +
                 '</a>';
         }
 
         function renderAI(container) {
             container.innerHTML = 
-                '<div class=\"section-header\">' +
-                    '<h2><i class=\"ri-brain-line\"></i> AI Cheating 101</h2>' +
-                    '<p class=\"section-desc\">AI tools and humanizers.</p>' +
+                '<div class="section-header">' +
+                    '<h2><i class="ri-brain-line"></i> AI Cheating 101</h2>' +
+                    '<p class="section-desc">AI tools and humanizers.</p>' +
                 '</div>' +
                 
-                '<div class=\"category\">' +
-                    '<div class=\"category-header\">' +
-                        '<div class=\"category-icon\" style=\"background: linear-gradient(135deg, #00ff88, #00d4ff);\"><i class=\"ri-robot-line cat-icon-white\"></i></div>' +
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon" style="background: linear-gradient(135deg, #00ff88, #00d4ff);"><i class="ri-robot-line cat-icon-white"></i></div>' +
                         '<h3>AI Tools</h3>' +
                     '</div>' +
-                    '<div class=\"ai-grid\">' +
+                    '<div class="ai-grid">' +
                         createAICard('Kimi', 'https://www.kimi.com/') +
                         createAICard('ChatGPT', 'https://chatgpt.com/') +
                         createAICard('Perplexity', 'https://www.perplexity.ai/') +
@@ -2195,12 +2183,12 @@
                     '</div>' +
                 '</div>' +
                 
-                '<div class=\"category\">' +
-                    '<div class=\"category-header\">' +
-                        '<div class=\"category-icon\" style=\"background: linear-gradient(135deg, #ff6b9d, #c77dff);\"><i class=\"ri-shield-user-line cat-icon-white\"></i></div>' +
+                '<div class="category">' +
+                    '<div class="category-header">' +
+                        '<div class="category-icon" style="background: linear-gradient(135deg, #ff6b9d, #c77dff);"><i class="ri-shield-user-line cat-icon-white"></i></div>' +
                         '<h3>Humanizers</h3>' +
                     '</div>' +
-                    '<div class=\"ai-grid\">' +
+                    '<div class="ai-grid">' +
                         createAICard('Rewritify', 'https://rewritify.ai/') +
                         createAICard('Humanize AI', 'https://humanize.ai/') +
                         createAICard('HumanizeAI.com', 'https://humanizeai.com/') +
