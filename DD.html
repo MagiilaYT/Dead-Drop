@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Drop Dead V7.1</title>
+    <title>Drop Dead V7.2</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
@@ -551,159 +551,6 @@
             gap: 8px;
         }
 
-        .music-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1rem;
-        }
-
-        .music-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.25rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            display: block;
-        }
-
-        .music-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-2);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 0;
-        }
-
-        .music-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-pink);
-            box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
-        }
-
-        .music-card:hover::before {
-            opacity: 0.05;
-        }
-
-        .music-title {
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .music-meta {
-            color: var(--accent-purple);
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-            font-weight: 500;
-        }
-
-        .music-url {
-            color: var(--accent-blue);
-            font-size: 0.8rem;
-            word-break: break-all;
-            opacity: 0.9;
-            font-family: 'Courier New', monospace;
-            position: relative;
-            z-index: 1;
-        }
-
-        .music-card:hover .music-url {
-            color: var(--primary);
-            opacity: 1;
-        }
-
-        .ai-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .ai-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.25rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            display: block;
-        }
-
-        .ai-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent-green), var(--primary));
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 0;
-        }
-
-        .ai-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-green);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-        }
-
-        .ai-card:hover::before {
-            opacity: 0.05;
-        }
-
-        .ai-title {
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ai-title i {
-            color: var(--accent-green);
-        }
-
-        .ai-url {
-            color: var(--accent-blue);
-            font-size: 0.8rem;
-            word-break: break-all;
-            opacity: 0.9;
-            font-family: 'Courier New', monospace;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ai-card:hover .ai-url {
-            color: var(--accent-green);
-            opacity: 1;
-        }
-
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -920,6 +767,11 @@
             width: 100%;
             border: none;
             background: #000;
+        }
+
+        .player-frame:fullscreen {
+            width: 100vw;
+            height: 100vh;
         }
 
         .player-controls {
@@ -1219,6 +1071,103 @@
             margin-right: 6px;
         }
 
+        /* Games Section Styles */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--accent-green);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .game-thumbnail {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, var(--dark), var(--card-bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-thumbnail i {
+            color: var(--accent-green);
+            z-index: 2;
+        }
+
+        .game-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .game-card:hover .game-thumbnail::before {
+            opacity: 1;
+        }
+
+        .game-info {
+            padding: 16px;
+        }
+
+        .game-title {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .game-category {
+            color: var(--accent-green);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .game-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--accent-yellow);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            border: 1px solid rgba(255, 212, 59, 0.3);
+        }
+
+        .game-badge.popular {
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            color: white;
+            border: none;
+        }
+
         /* Settings Styles */
         .settings-grid {
             display: grid;
@@ -1498,6 +1447,311 @@
             color: var(--primary);
         }
 
+        /* Music Player Styles */
+        .music-player-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .music-player-header {
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .music-player-art {
+            width: 200px;
+            height: 200px;
+            background: var(--darker);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: var(--accent-pink);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-player-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .music-player-info {
+            flex: 1;
+        }
+
+        .music-player-info h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .music-player-info p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .music-player-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .music-control-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .music-control-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .music-control-btn.play {
+            width: 80px;
+            height: 80px;
+            background: white;
+            color: var(--accent-pink);
+            font-size: 32px;
+        }
+
+        .music-control-btn.play:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 30px rgba(255,255,255,0.5);
+        }
+
+        .music-player-body {
+            padding: 30px;
+        }
+
+        .music-search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .music-search-input {
+            flex: 1;
+            background: var(--darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px 20px;
+            color: var(--text);
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .music-search-input:focus {
+            outline: none;
+            border-color: var(--accent-pink);
+        }
+
+        .music-search-btn {
+            padding: 15px 30px;
+            background: var(--gradient-2);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .music-search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .music-playlist {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .music-track {
+            background: var(--darker);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .music-track:hover {
+            border-color: var(--accent-pink);
+            transform: translateX(5px);
+            background: var(--card-hover);
+        }
+
+        .music-track.active {
+            border-color: var(--accent-pink);
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(199, 125, 255, 0.1));
+        }
+
+        .music-track-number {
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-pink);
+            font-weight: 700;
+        }
+
+        .music-track.active .music-track-number {
+            background: var(--accent-pink);
+            color: white;
+        }
+
+        .music-track-info {
+            flex: 1;
+        }
+
+        .music-track-title {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .music-track-artist {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .music-track-duration {
+            color: var(--text-muted);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .music-track-play {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .music-track:hover .music-track-play {
+            opacity: 1;
+        }
+
+        .music-track.active .music-track-play {
+            opacity: 1;
+            background: var(--accent-pink);
+            color: white;
+            border-color: var(--accent-pink);
+        }
+
+        .music-progress-container {
+            margin: 20px 0;
+        }
+
+        .music-progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--darker);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .music-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .music-progress-handle {
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            left: 0%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            cursor: grab;
+        }
+
+        .music-time {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 8px;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .music-volume-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .music-volume-slider {
+            flex: 1;
+            height: 6px;
+            background: var(--darker);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .music-volume-fill {
+            height: 100%;
+            background: var(--accent-pink);
+            border-radius: 3px;
+            width: 70%;
+        }
+
+        .hidden-youtube-player {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
         @media (max-width: 1024px) {
             .modal-body {
                 flex-direction: column;
@@ -1520,6 +1774,14 @@
             .theme-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
+            .music-player-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .music-player-art {
+                width: 150px;
+                height: 150px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1527,11 +1789,13 @@
             .search-box { width: 200px; }
             .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .link-grid { grid-template-columns: 1fr; }
+            .games-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .modal-content { width: 100%; height: 100%; border-radius: 0; }
             .modal-header { padding: 15px 20px; }
             .modal-poster-thumb { display: none; }
             .theme-grid { grid-template-columns: repeat(3, 1fr); }
             .settings-grid { grid-template-columns: 1fr; }
+            .music-player-info h3 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -1545,9 +1809,6 @@
             </div>
             <ul class="nav-list" id="navList"></ul>
             <div class="side-actions">
-                <button class="side-action-btn" id="refreshBtn" title="Refresh">
-                    <i class="ri-refresh-line"></i>
-                </button>
                 <button class="side-action-btn" id="downloadBtn" title="Download Offline Version">
                     <i class="ri-download-cloud-2-line"></i>
                 </button>
@@ -1581,7 +1842,7 @@
         </main>
     </div>
 
-    <!-- Movie/TV Modal -->
+    <!-- Movie/TV/Game Modal -->
     <div class="modal-overlay" id="movieModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1617,7 +1878,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="source-sidebar">
+                <div class="source-sidebar" id="sourceSidebar">
                     <div class="source-header">
                         <h3><i class="ri-list-radio"></i> Sources</h3>
                     </div>
@@ -1697,6 +1958,10 @@
         </div>
     </div>
 
+    <!-- Hidden YouTube Player for Music -->
+    <div id="youtubePlayerContainer" class="hidden-youtube-player"></div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         // Prevent multiple initializations
         if (window.dropDeadInitialized) {
@@ -1712,7 +1977,7 @@
             // Updated GoFile configuration - API changed in early 2026
             GOFILE_DOWNLOAD: {
                 url: 'https://gofile.io/d/Uv4LT2',
-                filename: 'DropDead_V7.1.html'
+                filename: 'DropDead_V7.2.html'
             },
             
             // Updated embed sources with working URLs as of 2025
@@ -1765,10 +2030,65 @@
                 { id: 'home', name: 'Home', icon: 'ri-home-4-line' },
                 { id: 'movies', name: 'Movies', icon: 'ri-movie-2-line' },
                 { id: 'tv', name: 'TV Shows', icon: 'ri-tv-line' },
+                { id: 'games', name: 'Games', icon: 'ri-gamepad-line' },
                 { id: 'sites', name: 'Sites', icon: 'ri-links-line' },
                 { id: 'music', name: 'Music', icon: 'ri-music-2-line' },
                 { id: 'ai', name: 'AI 101', icon: 'ri-brain-line' },
                 { id: 'settings', name: 'Settings', icon: 'ri-settings-3-line' }
+            ],
+
+            // Popular unblocked games organized by category
+            games: [
+                // Action Games
+                { name: 'Subway Surfers', category: 'Action', icon: 'ri-train-line', url: 'https://poki.com/en/g/subway-surfers', popular: true },
+                { name: 'Temple Run 2', category: 'Action', icon: 'ri-run-line', url: 'https://poki.com/en/g/temple-run-2' },
+                { name: 'Stickman Hook', category: 'Action', icon: 'ri-links-line', url: 'https://poki.com/en/g/stickman-hook' },
+                { name: 'Vex 7', category: 'Action', icon: 'ri-arrow-up-line', url: 'https://poki.com/en/g/vex-7' },
+                { name: 'Moto X3M', category: 'Action', icon: 'ri-motorbike-line', url: 'https://poki.com/en/g/moto-x3m' },
+                
+                // Puzzle Games
+                { name: '2048', category: 'Puzzle', icon: 'ri-grid-line', url: 'https://poki.com/en/g/2048', popular: true },
+                { name: 'Cut the Rope', category: 'Puzzle', icon: 'ri-scissors-cut-line', url: 'https://poki.com/en/g/cut-the-rope' },
+                { name: 'Tetris', category: 'Puzzle', icon: 'ri-square-line', url: 'https://tetris.com/play-tetris' },
+                { name: 'Sudoku', category: 'Puzzle', icon: 'ri-number-9', url: 'https://sudoku.com/' },
+                { name: 'Crossword', category: 'Puzzle', icon: 'ri-edit-line', url: 'https://www.nytimes.com/crosswords/game/mini' },
+                
+                // Racing Games
+                { name: 'Drift Hunters', category: 'Racing', icon: 'ri-car-line', url: 'https://drift-hunters.com/', popular: true },
+                { name: 'Smash Karts', category: 'Racing', icon: 'ri-taxi-line', url: 'https://smashkarts.io/' },
+                { name: 'Madalin Stunt Cars 2', category: 'Racing', icon: 'ri-roadster-line', url: 'https://madalinstuntcars2.com/' },
+                { name: 'Burnout Drift', category: 'Racing', icon: 'ri-fire-line', url: 'https://poki.com/en/g/burnout-drift' },
+                
+                // Sports Games
+                { name: 'Basketball Stars', category: 'Sports', icon: 'ri-basketball-line', url: 'https://poki.com/en/g/basketball-stars', popular: true },
+                { name: 'Soccer Skills', category: 'Sports', icon: 'ri-football-line', url: 'https://poki.com/en/g/soccer-skills-euro-cup' },
+                { name: '8 Ball Pool', category: 'Sports', icon: 'ri-billiards-line', url: 'https://poki.com/en/g/8-ball-pool' },
+                { name: 'Retro Bowl', category: 'Sports', icon: 'ri-football-line', url: 'https://retrobowl.me/' },
+                
+                // Multiplayer/IO Games
+                { name: 'Agar.io', category: 'Multiplayer', icon: 'ri-circle-line', url: 'https://agar.io/', popular: true },
+                { name: 'Slither.io', category: 'Multiplayer', icon: 'ri-snake-line', url: 'https://slither.io/' },
+                { name: 'Krunker.io', category: 'Multiplayer', icon: 'ri-shooting-line', url: 'https://krunker.io/' },
+                { name: 'Shell Shockers', category: 'Multiplayer', icon: 'ri-egg-line', url: 'https://shellshock.io/' },
+                { name: 'Zombs Royale', category: 'Multiplayer', icon: 'ri-user-star-line', url: 'https://zombsroyale.io/' },
+                
+                // Strategy Games
+                { name: 'Chess', category: 'Strategy', icon: 'ri-vip-crown-line', url: 'https://www.chess.com/play/computer', popular: true },
+                { name: 'Bloons TD 6', category: 'Strategy', icon: 'ri-bubble-chart-line', url: 'https://ninjakiwi.com/Games/Tower-Defense/Bloons-TD-6.html' },
+                { name: 'Clash Royale', category: 'Strategy', icon: 'ri-sword-line', url: 'https://clashroyale.com/' },
+                { name: 'Paper.io 2', category: 'Strategy', icon: 'ri-file-paper-line', url: 'https://paper-io.com/' },
+                
+                // Arcade/Classic
+                { name: 'Pac-Man', category: 'Arcade', icon: 'ri-emotion-happy-line', url: 'https://www.google.com/logos/2010/pacman10-i.html', popular: true },
+                { name: 'Tetris', category: 'Arcade', icon: 'ri-apps-line', url: 'https://tetris.com/play-tetris' },
+                { name: 'Snake', category: 'Arcade', icon: 'ri-snake-line', url: 'https://www.google.com/search?q=snake+game' },
+                { name: 'Space Invaders', category: 'Arcade', icon: 'ri-space-ship-line', url: 'https://www.classicgame.com/space-invaders' },
+                
+                // Educational
+                { name: 'Cool Math Games', category: 'Educational', icon: 'ri-calculator-line', url: 'https://www.coolmathgames.com/', popular: true },
+                { name: 'Hooda Math', category: 'Educational', icon: 'ri-functions-line', url: 'https://www.hoodamath.com/' },
+                { name: 'ABCya', category: 'Educational', icon: 'ri-abc-line', url: 'https://www.abcya.com/' },
+                { name: 'Funbrain', category: 'Educational', icon: 'ri-brain-line', url: 'https://www.funbrain.com/' }
             ],
 
             // 30 Different Themes - Fixed gradient syntax errors
@@ -1807,11 +2127,35 @@
 
             // Tab Cloak Options
             cloaks: {
-                default: { title: 'Drop Dead V7.1', icon: 'https://i.postimg.cc/7ZP9t1MP/drop-dead-3line-d-fixed.png' },
+                default: { title: 'Drop Dead V7.2', icon: 'https://i.postimg.cc/7ZP9t1MP/drop-dead-3line-d-fixed.png' },
                 classroom: { title: 'Google Classroom', icon: 'https://ssl.gstatic.com/classroom/ic_product_classroom_32.png' },
                 google: { title: 'Google', icon: 'https://www.google.com/favicon.ico' },
                 youtube: { title: 'YouTube', icon: 'https://www.youtube.com/s/desktop/28b67e7f/img/favicon.ico' }
-            }
+            },
+
+            // Music data - YouTube video IDs for popular songs
+            musicPlaylist: [
+                { title: "Heartless", artist: "Kanye West", id: "Co0tDuPveMc", duration: "3:31" },
+                { title: "Stronger", artist: "Kanye West", id: "PsO6ZnUZI0g", duration: "4:04" },
+                { title: "Power", artist: "Kanye West", id: "L53gjP-TtGE", duration: "4:52" },
+                { title: "Gold Digger", artist: "Kanye West ft. Jamie Foxx", id: "6vwNcNOTVzY", duration: "3:28" },
+                { title: "Runaway", artist: "Kanye West", id: "VhEoCOWUtcU", duration: "9:24" },
+                { title: "Bound 2", artist: "Kanye West", id: "BBAtAM7vtgc", duration: "4:14" },
+                { title: "Ni**as in Paris", artist: "Jay-Z & Kanye West", id: "gG_dA32oH44", duration: "4:12" },
+                { title: "Flashing Lights", artist: "Kanye West", id: "ila-hAUXR5U", duration: "4:28" },
+                { title: "All of the Lights", artist: "Kanye West", id: "HAfFfqiYLp0", duration: "5:28" },
+                { title: "Good Life", artist: "Kanye West ft. T-Pain", id: "FEKEjpTzB0k", duration: "3:50" },
+                { title: "See You Again", artist: "Tyler, The Creator", id: "i4kfkhkqMPw", duration: "3:00" },
+                { title: "EARFQUAKE", artist: "Tyler, The Creator", id: "HmAsUQNHVlY", duration: "3:10" },
+                { title: "Yonkers", artist: "Tyler, The Creator", id: "XSbZidsgMfw", duration: "4:09" },
+                { title: "Tamale", artist: "Tyler, The Creator", id: "wVwQ5q3zT0o", duration: "3:32" },
+                { title: "Who Dat Boy", artist: "Tyler, The Creator", id: "FUXX55WqYZs", duration: "3:25" },
+                { title: "Igor's Theme", artist: "Tyler, The Creator", id: "9JQDPjpfiGw", duration: "3:20" },
+                { title: "New Magic Wand", artist: "Tyler, The Creator", id: "2w8KUgIkAuY", duration: "3:15" },
+                { title: "A Boy is a Gun*", artist: "Tyler, The Creator", id: "9JQDPjpfiGw", duration: "3:30" },
+                { title: "Lumberjack", artist: "Tyler, The Creator", id: "R4Y7JIQlv20", duration: "2:18" },
+                { title: "WUSYANAME", artist: "Tyler, The Creator", id: "N2Y2vFQ--1w", duration: "2:01" }
+            ]
         };
 
         let currentItems = [];
@@ -1826,6 +2170,14 @@
         let customCloakTitle = '';
         let customCloakIcon = '';
         let secretBuffer = '';
+        let currentGame = null;
+        let currentSite = null;
+        
+        // Music player state
+        let youtubePlayer = null;
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+        let currentPlaylist = [];
 
         document.addEventListener('DOMContentLoaded', function() {
             initNav();
@@ -1834,7 +2186,114 @@
             initSecretListener();
             loadSavedSettings();
             showSection('home');
+            initMusicPlayer();
         });
+
+        // YouTube API callback
+        function onYouTubeIframeAPIReady() {
+            youtubePlayer = new YT.Player('youtubePlayerContainer', {
+                height: '1',
+                width: '1',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    disablekb: 1,
+                    fs: 0,
+                    modestbranding: 1,
+                    rel: 0,
+                    showinfo: 0
+                },
+                events: {
+                    onReady: onPlayerReady,
+                    onStateChange: onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log('YouTube Player Ready');
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                playNextTrack();
+            }
+            updatePlayButton();
+        }
+
+        function initMusicPlayer() {
+            currentPlaylist = [...CONFIG.musicPlaylist];
+        }
+
+        function updatePlayButton() {
+            const playBtn = document.querySelector('.music-control-btn.play i');
+            if (playBtn) {
+                playBtn.className = isPlaying ? 'ri-pause-fill' : 'ri-play-fill';
+            }
+        }
+
+        function togglePlay() {
+            if (!youtubePlayer || !youtubePlayer.playVideo) return;
+            
+            if (isPlaying) {
+                youtubePlayer.pauseVideo();
+                isPlaying = false;
+            } else {
+                youtubePlayer.playVideo();
+                isPlaying = true;
+            }
+            updatePlayButton();
+        }
+
+        function playTrack(index) {
+            if (!youtubePlayer || !youtubePlayer.loadVideoById) return;
+            
+            currentTrackIndex = index;
+            const track = currentPlaylist[index];
+            youtubePlayer.loadVideoById(track.id);
+            isPlaying = true;
+            updatePlayButton();
+            updateMusicUI();
+        }
+
+        function playNextTrack() {
+            currentTrackIndex = (currentTrackIndex + 1) % currentPlaylist.length;
+            playTrack(currentTrackIndex);
+        }
+
+        function playPrevTrack() {
+            currentTrackIndex = (currentTrackIndex - 1 + currentPlaylist.length) % currentPlaylist.length;
+            playTrack(currentTrackIndex);
+        }
+
+        function updateMusicUI() {
+            // Update track list highlighting
+            document.querySelectorAll('.music-track').forEach((track, index) => {
+                track.classList.toggle('active', index === currentTrackIndex);
+            });
+            
+            // Update player info
+            const currentTrack = currentPlaylist[currentTrackIndex];
+            const titleEl = document.querySelector('.music-player-info h3');
+            const artistEl = document.querySelector('.music-player-info p');
+            if (titleEl && artistEl && currentTrack) {
+                titleEl.textContent = currentTrack.title;
+                artistEl.textContent = currentTrack.artist;
+            }
+        }
+
+        function searchMusic(query) {
+            if (!query.trim()) {
+                currentPlaylist = [...CONFIG.musicPlaylist];
+            } else {
+                const lowerQuery = query.toLowerCase();
+                currentPlaylist = CONFIG.musicPlaylist.filter(track => 
+                    track.title.toLowerCase().includes(lowerQuery) || 
+                    track.artist.toLowerCase().includes(lowerQuery)
+                );
+            }
+            renderMusicPlaylist();
+        }
 
         function initSecretListener() {
             document.addEventListener('keydown', function(e) {
@@ -1859,7 +2318,6 @@
 
         function initEventListeners() {
             document.getElementById('navLogo').addEventListener('click', function() { showSection('home'); });
-            document.getElementById('refreshBtn').addEventListener('click', refreshData);
             document.getElementById('moviesBtn').addEventListener('click', function() { showSection('movies'); });
             document.getElementById('tvBtn').addEventListener('click', function() { showSection('tv'); });
             document.getElementById('sitesBtn').addEventListener('click', function() { showSection('sites'); });
@@ -1969,6 +2427,9 @@
                     currentType = 'tv';
                     renderTVShows(container);
                     break;
+                case 'games':
+                    renderGames(container);
+                    break;
                 case 'sites':
                     renderSites(container);
                     break;
@@ -2045,7 +2506,7 @@
                                 '<div class="cloak-icon" style="background: var(--gradient-1);"><i class="ri-skull-line" style="color: white;"></i></div>' +
                                 '<div class="cloak-info">' +
                                     '<h4>Default</h4>' +
-                                    '<p>Drop Dead V7.1</p>' +
+                                    '<p>Drop Dead V7.2</p>' +
                                 '</div>' +
                             '</div>' +
                             '<div class="cloak-option ' + (currentCloak === 'classroom' ? 'active' : '') + '" data-cloak="classroom">' +
@@ -2139,12 +2600,19 @@
         function renderHome(container) {
             container.innerHTML = 
                 '<div class="section-header">' +
-                    '<div class="version-badge">Drop Dead V7.1 - Fixed & Updated</div>' +
+                    '<div class="version-badge">Drop Dead V7.2</div>' +
                     '<h2><i class="ri-home-4-line"></i> Welcome to Drop Dead</h2>' +
                     '<p class="section-desc">Made by a person for people for some reason while watching family guy.</p>' +
                 '</div>' +
                 '<div class="updates">' +
                     '<h3><i class="ri-flashlight-line"></i>Latest Updates</h3>' +
+                    '<div class="update-item feature">NEW: Integrated Music Player (Not Working RN)</div>' +
+                    '<div class="update-item feature">NEW: Known sites now open in new tabs (no iframe)</div>' +
+                    '<div class="update-item feature">NEW: Unknown sites still use stealth iframe mode</div>' +
+                    '<div class="update-item feature">NEW: Games now open in Cinema Mode with iframe!</div>' +
+                    '<div class="update-item feature">NEW: Sites open in about:blank for stealth!</div>' +
+                    '<div class="update-item feature">Added Games section with popular unblocked games!</div>' +
+                    '<div class="update-item feature">Fixed: Fullscreen button now fullscreen the iframe properly</div>' +
                     '<div class="update-item feature">Fixed: AutoEmbed API updated to player.autoembed.cc</div>' +
                     '<div class="update-item feature">Fixed: GoFile download (opens in new tab due to API changes)</div>' +
                     '<div class="update-item feature">Fixed: Theme gradient syntax errors</div>' +
@@ -2180,15 +2648,20 @@
                             '<div class="link-url">Binge-watch series</div>' +
                             '<div class="link-note">Popular shows & seasons</div>' +
                         '</div>' +
+                        '<div class="link-card nav-to-games">' +
+                            '<div class="link-title"><i class="ri-gamepad-line accent-green"></i> Games</div>' +
+                            '<div class="link-url">Play unblocked games</div>' +
+                            '<div class="link-note">Action, puzzle, racing & more</div>' +
+                        '</div>' +
                         '<div class="link-card nav-to-sites">' +
-                            '<div class="link-title"><i class="ri-gamepad-line"></i> Game Sites</div>' +
+                            '<div class="link-title"><i class="ri-links-line"></i> Game Sites</div>' +
                             '<div class="link-url">All known and unknown sites</div>' +
                             '<div class="link-note">Curated collection of working proxies</div>' +
                         '</div>' +
                         '<div class="link-card nav-to-music">' +
                             '<div class="link-title"><i class="ri-music-2-line accent-pink"></i> Music</div>' +
-                            '<div class="link-url">Kanye West & Tyler unreleased</div>' +
-                            '<div class="link-note">Major albums and archives</div>' +
+                            '<div class="link-url">Built-in music player</div>' +
+                            '<div class="link-note">Kanye West & Tyler, The Creator</div>' +
                         '</div>' +
                         '<div class="link-card nav-to-ai">' +
                             '<div class="link-title"><i class="ri-brain-line accent-green"></i> AI 101</div>' +
@@ -2233,6 +2706,7 @@
             
             container.querySelector('.nav-to-movies').addEventListener('click', function() { showSection('movies'); });
             container.querySelector('.nav-to-tv').addEventListener('click', function() { showSection('tv'); });
+            container.querySelector('.nav-to-games').addEventListener('click', function() { showSection('games'); });
             container.querySelector('.nav-to-sites').addEventListener('click', function() { showSection('sites'); });
             container.querySelector('.nav-to-music').addEventListener('click', function() { showSection('music'); });
             container.querySelector('.nav-to-ai').addEventListener('click', function() { showSection('ai'); });
@@ -2269,6 +2743,74 @@
                 '</div>';
             
             await loadTVShows();
+        }
+
+        function renderGames(container) {
+            container.innerHTML = 
+                '<div class="section-header">' +
+                    '<h2><i class="ri-gamepad-line"></i> Games</h2>' +
+                    '<p class="section-desc">Popular Unblocked Games (Some Work Will Fix Soon)</p>' +
+                '</div>' +
+                '<div class="cards-grid" id="gamesGrid"></div>';
+            
+            var grid = document.getElementById('gamesGrid');
+            var html = '';
+            
+            CONFIG.games.forEach(function(game, index) {
+                html += 
+                    '<div class="content-card game-card-item" data-game-index="' + index + '">' +
+                        '<div style="width: 100%; height: 260px; background: linear-gradient(135deg, var(--dark), var(--card-bg)); display: flex; align-items: center; justify-content: center; font-size: 64px; position: relative;">' +
+                            '<i class="' + game.icon + '" style="color: var(--accent-green);"></i>' +
+                            (game.popular ? '<div class="card-badge" style="position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));">POPULAR</div>' : '') +
+                        '</div>' +
+                        '<div class="card-info">' +
+                            '<div class="card-title">' + game.name + '</div>' +
+                            '<div class="card-meta">' +
+                                '<span style="color: var(--accent-green);">' + game.category + '</span>' +
+                                '<span><i class="ri-play-circle-line"></i> Play</span>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+            });
+            
+            grid.innerHTML = html;
+            
+            // Add click handlers
+            grid.querySelectorAll('.game-card-item').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    var gameIndex = parseInt(this.dataset.gameIndex);
+                    openGameModal(CONFIG.games[gameIndex]);
+                });
+            });
+        }
+
+        function openGameModal(game) {
+            currentGame = game;
+            currentItem = null;
+            currentSite = null;
+            
+            var modal = document.getElementById('movieModal');
+            modal.classList.add('active');
+            
+            // Hide source sidebar for games
+            document.getElementById('sourceSidebar').style.display = 'none';
+            
+            document.getElementById('modalTitle').textContent = game.name;
+            document.getElementById('modalPosterThumb').querySelector('img').src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="90"><rect fill="%2312121a" width="60" height="90"/><text x="50%" y="50%" font-size="30" fill="%2300ff88" text-anchor="middle" dominant-baseline="middle"><i class="' + game.icon + '"></i></text></svg>';
+            
+            document.getElementById('modalMeta').innerHTML = 
+                '<span><i class="ri-gamepad-line"></i> ' + game.category + '</span>' +
+                '<span><i class="ri-global-line"></i> Online Game</span>';
+            
+            var iframe = document.getElementById('playerFrame');
+            var loader = document.getElementById('iframeLoader');
+            
+            loader.classList.add('active');
+            iframe.src = game.url;
+            
+            setTimeout(function() {
+                loader.classList.remove('active');
+            }, 2000);
         }
 
         async function loadMovies() {
@@ -2477,6 +3019,9 @@
 
         async function openItemModal(itemId) {
             currentItem = null;
+            currentGame = null;
+            currentSite = null;
+            
             for (var i = 0; i < currentItems.length; i++) {
                 if (currentItems[i].id === itemId) {
                     currentItem = currentItems[i];
@@ -2490,6 +3035,9 @@
             
             var modal = document.getElementById('movieModal');
             modal.classList.add('active');
+            
+            // Show source sidebar for movies/tv
+            document.getElementById('sourceSidebar').style.display = 'flex';
             
             document.getElementById('modalTitle').textContent = currentItem.title;
             document.getElementById('modalPosterThumb').querySelector('img').src = currentItem.image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
@@ -2575,41 +3123,67 @@
         }
 
         function reloadPlayer() {
-            loadSource(currentSourceIndex);
+            if (currentGame) {
+                var iframe = document.getElementById('playerFrame');
+                var loader = document.getElementById('iframeLoader');
+                loader.classList.add('active');
+                iframe.src = currentGame.url;
+                setTimeout(function() {
+                    loader.classList.remove('active');
+                }, 2000);
+            } else if (currentSite) {
+                var iframe = document.getElementById('playerFrame');
+                var loader = document.getElementById('iframeLoader');
+                loader.classList.add('active');
+                iframe.src = currentSite.url;
+                setTimeout(function() {
+                    loader.classList.remove('active');
+                }, 2000);
+            } else if (currentItem) {
+                loadSource(currentSourceIndex);
+            }
         }
 
         function openInNewTab() {
-            if (!currentItem) return;
-            var source = CONFIG.embedSources[currentSourceIndex];
-            var type = currentItem.type === 'movie' ? 'movie' : 'tv';
-            var url;
-            
-            if (source.name === 'AutoEmbed' && currentItem.imdb_id) {
-                url = source.url + type + '/' + currentItem.imdb_id;
-            } else if (source.name === 'AutoEmbed' && !currentItem.imdb_id) {
-                url = source.url + 'tmdb/' + currentItem.id;
-            } else {
-                url = source.url + type + '/' + currentItem.id;
+            if (currentGame) {
+                window.open(currentGame.url, '_blank');
+            } else if (currentSite) {
+                window.open(currentSite.url, '_blank');
+            } else if (currentItem) {
+                var source = CONFIG.embedSources[currentSourceIndex];
+                var type = currentItem.type === 'movie' ? 'movie' : 'tv';
+                var url;
+                
+                if (source.name === 'AutoEmbed' && currentItem.imdb_id) {
+                    url = source.url + type + '/' + currentItem.imdb_id;
+                } else if (source.name === 'AutoEmbed' && !currentItem.imdb_id) {
+                    url = source.url + 'tmdb/' + currentItem.id;
+                } else {
+                    url = source.url + type + '/' + currentItem.id;
+                }
+                
+                window.open(url, '_blank');
             }
-            
-            window.open(url, '_blank');
         }
 
         function toggleFullscreen() {
-            var modalContent = document.querySelector('.modal-content');
-            if (!document.fullscreenElement) {
-                modalContent.requestFullscreen().catch(function(err) {
-                    console.log('Fullscreen error:', err);
-                });
-            } else {
-                document.exitFullscreen();
+            var iframe = document.getElementById('playerFrame');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
             }
         }
 
         function closeModal() {
             document.getElementById('movieModal').classList.remove('active');
             document.getElementById('playerFrame').src = 'about:blank';
+            document.getElementById('sourceSidebar').style.display = 'flex';
             currentItem = null;
+            currentGame = null;
+            currentSite = null;
         }
 
         // Download Modal Functions
@@ -2666,7 +3240,7 @@
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
             a.href = url;
-            a.download = 'DropDead_V7.1_Fixed.html';
+            a.download = 'DropDead_V7.2.html';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -2682,13 +3256,16 @@
             }, 2000);
         }
 
-        function createLink(title, url, description, note) {
+        function createLink(title, url, description, note, isKnown) {
             note = note || '';
-            return '<a class="link-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
+            var linkClass = isKnown ? 'link-card known-site' : 'link-card site-card';
+            var clickHandler = isKnown ? 'onclick="window.open(\'' + url + '\', \'_blank\')"' : '';
+            return '<div class="' + linkClass + '" data-url="' + url + '" data-title="' + title + '" ' + clickHandler + '>' +
                     '<div class="link-title">' + title + '</div>' +
                     '<div class="link-url">' + url + '</div>' +
                     (note ? '<div class="link-note"><i class="ri-error-warning-line"></i> ' + note + '</div>' : '') +
-                '</a>';
+                    (isKnown ? '<div class="link-note" style="color: var(--accent-green);"><i class="ri-external-link-line"></i> Opens in new tab</div>' : '') +
+                '</div>';
         }
 
         function createSubcategory(name) {
@@ -2699,20 +3276,21 @@
             var html = 
                 '<div class="section-header">' +
                     '<h2><i class="ri-links-line"></i> All Game Sites</h2>' +
-                    '<p class="section-desc">Complete collection of known and unknown sites.</p>' +
+                    '<p class="section-desc">Unblocked Sites I Found For My School. Known sites open in new tabs, Unknown sites use stealth mode.</p>' +
                 '</div>' +
                 
                 '<div class="category">' +
                     '<div class="category-header">' +
                         '<div class="category-icon"><i class="ri-gamepad-line cat-icon-white"></i></div>' +
                         '<h3>Popular Sites</h3>' +
+                        '<span class="category-subtitle" style="color: var(--accent-green);">Open in new tab</span>' +
                     '</div>' +
                     '<div class="link-grid">' +
-                        createLink('Now.gg', 'https://now.gg/', 'Cloud gaming platform') +
-                        createLink('Poki', 'https://poki.com/', 'Browser games collection') +
-                        createLink('The Pizza Edition', 'https://thepizzaedition-games.github.io/', 'Curated game collection') +
-                        createLink('Crazy Games', 'https://www.crazygames.com/', 'Action & racing games') +
-                        createLink('G+ Portal', 'https://sites.google.com/view/drive-u-7-home/home', 'Google Sites proxy') +
+                        createLink('Now.gg', 'https://now.gg/', 'Cloud gaming platform', '', true) +
+                        createLink('Poki', 'https://poki.com/', 'Browser games collection', '', true) +
+                        createLink('The Pizza Edition', 'https://thepizzaedition-games.github.io/', 'Curated game collection', '', true) +
+                        createLink('Crazy Games', 'https://www.crazygames.com/', 'Action & racing games', '', true) +
+                        createLink('G+', 'https://sites.google.com/view/drive-u-7-home/home', 'Google Sites proxy', '', true) +
                     '</div>' +
                 '</div>' +
                 
@@ -2720,204 +3298,204 @@
                     '<div class="category-header">' +
                         '<div class="category-icon cat-gradient-orange-red"><i class="ri-spy-line cat-icon-white"></i></div>' +
                         '<h3>UnKnown Sites</h3>' +
-                        '<span class="category-subtitle">Lesser known = more likely to work</span>' +
+                        '<span class="category-subtitle">Stealth iframe mode</span>' +
                     '</div>' +
                     
                     createSubcategory('Galaxy V6') +
                     '<div class="link-grid">' +
-                        createLink('Galaxy #1', 'https://cspcn.cspcn.pt/onboarding/') +
-                        createLink('Galaxy #2', 'https://tracks.empleosonora.gob.mx/onboarding/') +
-                        createLink('Galaxy #3', 'https://policies.osiadaczabogados.cl/onboarding/') +
-                        createLink('Galaxy #4', 'https://camel.stjameskilolo.org/onboarding/') +
-                        createLink('Galaxy #5', 'https://notes.keybusinessconnection.com/onboarding/') +
+                        createLink('Galaxy #1', 'https://cspcn.cspcn.pt/onboarding/', '', '', false) +
+                        createLink('Galaxy #2', 'https://tracks.empleosonora.gob.mx/onboarding/', '', '', false) +
+                        createLink('Galaxy #3', 'https://policies.osiadaczabogados.cl/onboarding/', '', '', false) +
+                        createLink('Galaxy #4', 'https://camel.stjameskilolo.org/onboarding/', '', '', false) +
+                        createLink('Galaxy #5', 'https://notes.keybusinessconnection.com/onboarding/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Quasar') +
                     '<div class="link-grid">' +
-                        createLink('Quasar #1', 'https://harveyoaksbaptist.org/') +
-                        createLink('Quasar #2', 'https://aifk29r89eieididjjejdo.chrisbaxmann.com/') +
+                        createLink('Quasar #1', 'https://harveyoaksbaptist.org/', '', '', false) +
+                        createLink('Quasar #2', 'https://aifk29r89eieididjjejdo.chrisbaxmann.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Void Network') +
                     '<div class="link-grid">' +
-                        createLink('Void Network V5 #1', 'https://vcsa.void.apertura.com/') +
-                        createLink('Void Network V5 #2', 'https://playernation.wanhuiarchitect.com/') +
+                        createLink('Void Network V5 #1', 'https://vcsa.void.apertura.com/', '', '', false) +
+                        createLink('Void Network V5 #2', 'https://playernation.wanhuiarchitect.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Ghost') +
                     '<div class="link-grid">' +
-                        createLink('Ghost', 'https://need.helpforukraine.at/') +
+                        createLink('Ghost', 'https://need.helpforukraine.at/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Fern') +
                     '<div class="link-grid">' +
-                        createLink('Fern', 'https://canvasbackpackstore.com/') +
+                        createLink('Fern', 'https://canvasbackpackstore.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Frogies Arcade V4') +
                     '<div class="link-grid">' +
-                        createLink('Frogies Arcade V4', 'https://larp.now/') +
+                        createLink('Frogies Arcade V4', 'https://larp.now/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Axiom') +
                     '<div class="link-grid">' +
-                        createLink('Axiom #1', 'https://brisk.bisblick.org/') +
-                        createLink('Axiom #2', 'https://learningvcsa.fhoster.ru/') +
+                        createLink('Axiom #1', 'https://brisk.bisblick.org/', '', '', false) +
+                        createLink('Axiom #2', 'https://learningvcsa.fhoster.ru/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Selenite') +
                     '<div class="link-grid">' +
-                        createLink('Selenite', 'https://vcsa.churchinhuntsville.org/') +
+                        createLink('Selenite', 'https://vcsa.churchinhuntsville.org/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('HypeStudy (Damn thats a lot)') +
                     '<div class="link-grid">' +
-                        createLink('HypeStudy #1', 'https://english.jobvn.com/') +
-                        createLink('HypeStudy #2', 'https://boeing.robbinsaviation.com/') +
-                        createLink('HypeStudy #3', 'https://education-learning.tovamiasto.com/') +
-                        createLink('HypeStudy #4', 'https://sciencepark.cc/') +
-                        createLink('HypeStudy #5', 'https://fulcrumtheatreinc.com/') +
-                        createLink('HypeStudy #6', 'https://info.hotelsunrisegrand.com/') +
-                        createLink('HypeStudy #7', 'https://info.shop1stoponline.com/') +
-                        createLink('HypeStudy #8', 'https://studywith-vcsa.ploteando.com/') +
+                        createLink('HypeStudy #1', 'https://english.jobvn.com/', '', '', false) +
+                        createLink('HypeStudy #2', 'https://boeing.robbinsaviation.com/', '', '', false) +
+                        createLink('HypeStudy #3', 'https://education-learning.tovamiasto.com/', '', '', false) +
+                        createLink('HypeStudy #4', 'https://sciencepark.cc/', '', '', false) +
+                        createLink('HypeStudy #5', 'https://fulcrumtheatreinc.com/', '', '', false) +
+                        createLink('HypeStudy #6', 'https://info.hotelsunrisegrand.com/', '', '', false) +
+                        createLink('HypeStudy #7', 'https://info.shop1stoponline.com/', '', '', false) +
+                        createLink('HypeStudy #8', 'https://studywith-vcsa.ploteando.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory("Bigfoot's Game Shack") +
                     '<div class="link-grid">' +
-                        createLink("Bigfoot Link", 'https://idyllic-choux-ce6d8a.netlify.app/g/') +
+                        createLink("Bigfoot Link", 'https://idyllic-choux-ce6d8a.netlify.app/g/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Demon') +
                     '<div class="link-grid">' +
-                        createLink('Demon', 'https://learn.turbo-education.com/') +
+                        createLink('Demon', 'https://learn.turbo-education.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Saturn') +
                     '<div class="link-grid">' +
-                        createLink('Saturn #1', 'https://lightspeedisass.graphicon.org/') +
-                        createLink('Saturn #2', 'https://blackpilmethodsarethegoat.graphicon.org/') +
-                        createLink('Saturn #3', 'https://61inthebig21.polezen.bg/') +
-                        createLink('Saturn #4', 'https://january2026.smasesorias.cl/') +
-                        createLink('Saturn #5', 'https://morelinks.smasesorias.cl/') +
-                        createLink('Saturn #6', 'https://cheesyballsnohomo.smasesorias.cl/') +
-                        createLink('Saturn #7', 'https://gogaurdian.eminescusm.ro/') +
+                        createLink('Saturn #1', 'https://lightspeedisass.graphicon.org/', '', '', false) +
+                        createLink('Saturn #2', 'https://blackpilmethodsarethegoat.graphicon.org/', '', '', false) +
+                        createLink('Saturn #3', 'https://61inthebig21.polezen.bg/', '', '', false) +
+                        createLink('Saturn #4', 'https://january2026.smasesorias.cl/', '', '', false) +
+                        createLink('Saturn #5', 'https://morelinks.smasesorias.cl/', '', '', false) +
+                        createLink('Saturn #6', 'https://cheesyballsnohomo.smasesorias.cl/', '', '', false) +
+                        createLink('Saturn #7', 'https://gogaurdian.eminescusm.ro/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Dogeub') +
                     '<div class="link-grid">' +
-                        createLink('Dogeub', 'https://jeanndunn.rdocart.com/') +
+                        createLink('Dogeub', 'https://jeanndunn.rdocart.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Reds Exploit Center') +
                     '<div class="link-grid">' +
-                        createLink('Reds #1', 'https://zapscroll.sbs/') +
-                        createLink('Reds #2', 'https://rs.gmsgroup.app/') +
-                        createLink('Now.gg Mirror', 'https://nowgg.fun/apps/uncube/7074/now.html') +
+                        createLink('Reds #1', 'https://zapscroll.sbs/', '', '', false) +
+                        createLink('Reds #2', 'https://rs.gmsgroup.app/', '', '', false) +
+                        createLink('Now.gg Mirror', 'https://nowgg.fun/apps/uncube/7074/now.html', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Macro Games') +
                     '<div class="link-grid">' +
-                        createLink('Macro Games', 'https://games.macrolorblx.com/') +
+                        createLink('Macro Games', 'https://games.macrolorblx.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Utopia') +
                     '<div class="link-grid">' +
-                        createLink('Utopia #1', 'https://field.school.embeddedonline.org/') +
-                        createLink('Utopia #2', 'https://debate.brain.maniel.one.pl/') +
+                        createLink('Utopia #1', 'https://field.school.embeddedonline.org/', '', '', false) +
+                        createLink('Utopia #2', 'https://debate.brain.maniel.one.pl/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('DayDream') +
                     '<div class="link-grid">' +
-                        createLink('DayDream #1', 'https://dreams.centromariapolis.cl/') +
-                        createLink('DayDream #2', 'https://daydreaming.realisation.org/') +
-                        createLink('DayDream #3', 'https://daydreaming.env.pm/') +
-                        createLink('DayDream #4', 'https://blog.artweb.website.cdn.cloudflare.net/') +
+                        createLink('DayDream #1', 'https://dreams.centromariapolis.cl/', '', '', false) +
+                        createLink('DayDream #2', 'https://daydreaming.realisation.org/', '', '', false) +
+                        createLink('DayDream #3', 'https://daydreaming.env.pm/', '', '', false) +
+                        createLink('DayDream #4', 'https://blog.artweb.website.cdn.cloudflare.net/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('NautilusOS') +
                     '<div class="link-grid">' +
-                        createLink('NautilusOS', 'https://nautilus-os.vercel.app/') +
+                        createLink('NautilusOS', 'https://nautilus-os.vercel.app/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory("Jordan's Math Work V7") +
                     '<div class="link-grid">' +
-                        createLink("Jordan's Math Work", 'https://jmw.grandemass.tokeslaszlo.ro/') +
+                        createLink("Jordan's Math Work", 'https://jmw.grandemass.tokeslaszlo.ro/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Xin Chao') +
                     '<div class="link-grid">' +
-                        createLink('Xin Chao #1', 'https://kaw.edujose.org/') +
-                        createLink('Xin Chao #2', 'https://learn.litesa.com/') +
+                        createLink('Xin Chao #1', 'https://kaw.edujose.org/', '', '', false) +
+                        createLink('Xin Chao #2', 'https://learn.litesa.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Boredom V2') +
                     '<div class="link-grid">' +
-                        createLink('Boredom #1', 'https://get.hotelconsuladoinn.com/') +
-                        createLink('Boredom #2', 'https://vcsa.national-birdshow.com/') +
+                        createLink('Boredom #1', 'https://get.hotelconsuladoinn.com/', '', '', false) +
+                        createLink('Boredom #2', 'https://vcsa.national-birdshow.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Overcloaked') +
                     '<div class="link-grid">' +
-                        createLink('Overcloaked #1', 'https://lecturer.assignment.hybrid.dormitory.portal.felixrotaru.com/') +
-                        createLink('Overcloaked #2', 'https://funlearning.gatewaysuppliers.com.np/') +
+                        createLink('Overcloaked #1', 'https://lecturer.assignment.hybrid.dormitory.portal.felixrotaru.com/', '', '', false) +
+                        createLink('Overcloaked #2', 'https://funlearning.gatewaysuppliers.com.np/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Shuttle') +
                     '<div class="link-grid">' +
-                        createLink('Shuttle #1', 'http://classroomlearning.maxmirgidro.ru/') +
-                        createLink('Shuttle #2', 'http://wikipedialist.wikidelia.net/') +
+                        createLink('Shuttle #1', 'http://classroomlearning.maxmirgidro.ru/', '', '', false) +
+                        createLink('Shuttle #2', 'http://wikipedialist.wikidelia.net/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Lunar') +
                     '<div class="link-grid">' +
-                        createLink('Lunar', 'https://testing.suwal.com.np/') +
+                        createLink('Lunar', 'https://testing.suwal.com.np/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Truffled') +
                     '<div class="link-grid">' +
-                        createLink('Truffled #1', 'https://hi.bergbahnen-bezau.at/') +
-                        createLink('Truffled #2', 'https://computer.gryk.de/') +
+                        createLink('Truffled #1', 'https://hi.bergbahnen-bezau.at/', '', '', false) +
+                        createLink('Truffled #2', 'https://computer.gryk.de/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Classroom 6X') +
                     '<div class="link-grid">' +
-                        createLink('Classroom 6X', 'https://sites.google.com/view/classroom6x/') +
+                        createLink('Classroom 6X', 'https://sites.google.com/view/classroom6x/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Kazwire') +
                     '<div class="link-grid">' +
-                        createLink('Kazwire #1', 'https://history.lodgegomantak.org/') +
-                        createLink('Kazwire #2', 'https://art.lexvoip.com/') +
+                        createLink('Kazwire #1', 'https://history.lodgegomantak.org/', '', '', false) +
+                        createLink('Kazwire #2', 'https://art.lexvoip.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Big Mac Heros') +
                     '<div class="link-grid">' +
-                        createLink('Big Mac Heros', 'https://d2edvleactrkkb.cloudfront.net/') +
+                        createLink('Big Mac Heros', 'https://d2edvleactrkkb.cloudfront.net/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Roblox Unblocker') +
                     '<div class="link-grid">' +
-                        createLink('Roblox #1', 'https://hotkitchenbag.com/') +
-                        createLink('Roblox #2', 'https://websitesbridge.com/') +
-                        createLink('Roblox #3', 'https://nowgg.co/play/roblox-corporation/5349/roblox') +
+                        createLink('Roblox #1', 'https://hotkitchenbag.com/', '', '', false) +
+                        createLink('Roblox #2', 'https://websitesbridge.com/', '', '', false) +
+                        createLink('Roblox #3', 'https://nowgg.co/play/roblox-corporation/5349/roblox', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('WebLFG') +
                     '<div class="link-grid">' +
-                        createLink('WebLFG #1', 'https://weblfg.onrender.com/') +
-                        createLink('WebLFG #2', 'https://biochemistry.onrender.com/') +
+                        createLink('WebLFG #1', 'https://weblfg.onrender.com/', '', '', false) +
+                        createLink('WebLFG #2', 'https://biochemistry.onrender.com/', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Noodle Activities') +
                     '<div class="link-grid">' +
-                        createLink('Noodle #1', 'https://googleclassroom.netlify.app/activities') +
-                        createLink('Noodle #2', 'https://billnye.netlify.app/activities') +
-                        createLink('Noodle #3', 'https://earnest-tarsier-3c02d1.netlify.app/activities') +
+                        createLink('Noodle #1', 'https://googleclassroom.netlify.app/activities', '', '', false) +
+                        createLink('Noodle #2', 'https://billnye.netlify.app/activities', '', '', false) +
+                        createLink('Noodle #3', 'https://earnest-tarsier-3c02d1.netlify.app/activities', '', '', false) +
                     '</div>' +
                     
                     createSubcategory('Lioxryt') +
                     '<div class="link-grid">' +
-                        createLink('Lioxryt', 'https://lioxrytbackup.netlify.app/') +
+                        createLink('Lioxryt', 'https://lioxrytbackup.netlify.app/', '', '', false) +
                     '</div>' +
                 '</div>' +
                 
@@ -2927,75 +3505,219 @@
                         '<h3>Game Archives</h3>' +
                     '</div>' +
                     '<div class="link-grid">' +
-                        createLink('Wolf Unblock', 'https://sites.google.com/view/wolfunblock/home') +
-                        createLink('Pizza Edition Archive', 'https://sites.google.com/view/pizzaedition/home') +
-                        createLink('Triple The Potatoes', 'https://sites.google.com/view/tripplethepotatoes/home') +
-                        createLink('Lots O Games', 'https://sites.google.com/view/lotsogames/home') +
+                        createLink('Wolf Unblock', 'https://sites.google.com/view/wolfunblock/home', '', '', false) +
+                        createLink('Pizza Edition Archive', 'https://sites.google.com/view/pizzaedition/home', '', '', false) +
+                        createLink('Triple The Potatoes', 'https://sites.google.com/view/tripplethepotatoes/home', '', '', false) +
+                        createLink('Lots O Games', 'https://sites.google.com/view/lotsogames/home', '', '', false) +
                     '</div>' +
                 '</div>';
             
             container.innerHTML = html;
+            
+            // Add click handlers for site cards (unknown sites only)
+            container.querySelectorAll('.site-card').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    var url = this.dataset.url;
+                    var title = this.dataset.title;
+                    openSiteInStealthMode(url, title);
+                });
+            });
         }
 
-        function createMusicCard(title, tracks, duration, url) {
-            return '<a class="music-card" href="' + url + '" target="_blank" rel="noopener noreferrer">' +
-                    '<div class="music-title"><i class="ri-album-fill accent-pink"></i> ' + title + '</div>' +
-                    '<div class="music-meta">' + tracks + ' | ' + duration + '</div>' +
-                    '<div class="music-url">' + url + '</div>' +
-                '</a>';
+        function openSiteInStealthMode(url, title) {
+            currentSite = { url: url, title: title };
+            currentItem = null;
+            currentGame = null;
+            
+            var modal = document.getElementById('movieModal');
+            modal.classList.add('active');
+            
+            // Hide source sidebar for sites
+            document.getElementById('sourceSidebar').style.display = 'none';
+            
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalPosterThumb').querySelector('img').src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="90"><rect fill="%2312121a" width="60" height="90"/><text x="50%" y="50%" font-size="24" fill="%2300d4ff" text-anchor="middle" dominant-baseline="middle">🌐</text></svg>';
+            
+            document.getElementById('modalMeta').innerHTML = 
+                '<span><i class="ri-links-line"></i> Proxy Site</span>' +
+                '<span><i class="ri-shield-check-line"></i> Stealth Mode</span>';
+            
+            var iframe = document.getElementById('playerFrame');
+            var loader = document.getElementById('iframeLoader');
+            
+            loader.classList.add('active');
+            
+            // Create about:blank page with the site embedded
+            var blankPageContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>about:blank</title>
+                    <style>
+                        * { margin: 0; padding: 0; box-sizing: border-box; }
+                        body { 
+                            width: 100vw; 
+                            height: 100vh; 
+                            overflow: hidden;
+                            background: #0f0f1a;
+                        }
+                        iframe {
+                            width: 100%;
+                            height: 100%;
+                            border: none;
+                        }
+                        .loading {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            color: #00d4ff;
+                            font-family: sans-serif;
+                            font-size: 18px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="loading" id="loading">Loading site...</div>
+                    <iframe src="${url}" sandbox="allow-scripts allow-same-origin allow-popups allow-forms" onload="document.getElementById('loading').style.display='none'"></iframe>
+                </body>
+                </html>
+            `;
+            
+            var blob = new Blob([blankPageContent], { type: 'text/html' });
+            var blobUrl = URL.createObjectURL(blob);
+            
+            iframe.src = blobUrl;
+            
+            setTimeout(function() {
+                loader.classList.remove('active');
+            }, 2000);
         }
 
         function renderMusic(container) {
             container.innerHTML = 
                 '<div class="section-header">' +
-                    '<h2><i class="ri-music-2-line"></i> Music</h2>' +
-                    '<p class="section-desc">Unreleased albums and archives.</p>' +
+                    '<h2><i class="ri-music-2-line"></i> Music Player</h2>' +
+                    '<p class="section-desc">Built-in music player (Under Constuction.)</p>' +
                 '</div>' +
                 
-                '<div class="category">' +
-                    '<div class="category-header">' +
-                        '<div class="category-icon cat-gradient-2"><i class="ri-user-voice-line cat-icon-white"></i></div>' +
-                        '<h3>KANYE WEST Major Unreleased Albums</h3>' +
+                '<div class="music-player-container">' +
+                    '<div class="music-player-header">' +
+                        '<div class="music-player-art">' +
+                            '<i class="ri-album-fill"></i>' +
+                        '</div>' +
+                        '<div class="music-player-info">' +
+                            '<h3 id="currentTrackTitle">Select a track</h3>' +
+                            '<p id="currentTrackArtist">Drop Dead Music Player</p>' +
+                            '<div class="music-player-controls">' +
+                                '<button class="music-control-btn" onclick="playPrevTrack()"><i class="ri-skip-back-fill"></i></button>' +
+                                '<button class="music-control-btn play" onclick="togglePlay()"><i class="ri-play-fill"></i></button>' +
+                                '<button class="music-control-btn" onclick="playNextTrack()"><i class="ri-skip-forward-fill"></i></button>' +
+                            '</div>' +
+                        '</div>' +
                     '</div>' +
-                    '<div class="music-grid">' +
-                        createMusicCard('YANDHI', '31 tracks', '1h 50m', 'https://untitled.stream/library/project/LR94pKICudarIIsoKE43Q') +
-                        createMusicCard('DONDA 2: FOR MAMA', '39 tracks', '2h 3m', 'https://untitled.stream/library/project/SxhcFIlbTSTtBAKJbUdiQ') +
-                        createMusicCard('DONDA 2.0', '25 tracks', '2h 12s', 'https://untitled.stream/library/project/IzifbXVhUjA9uo2rM9XLP') +
-                        createMusicCard('DONDA 3', '18 tracks', '1h 3m', 'https://untitled.stream/library/project/X3PTFiYaNADrj5Fvcspyz') +
-                        createMusicCard('BULLY', '16 tracks', '52m 3s', 'https://untitled.stream/library/project/YK4Rl9CwHviaZ8wewr1sw') +
-                        createMusicCard('YEPHORIA', '17 tracks', '1h 17m', 'https://untitled.stream/library/project/JdQTAbufCUGRp9hOlXgkK') +
-                        createMusicCard('JESUS IS EVERYTHING', '24 tracks', '1h 38m', 'https://untitled.stream/library/project/2prAs3il0Fo2NeIwyv9oK') +
-                        createMusicCard('TRUE PROPHETS', '16 tracks', '1h 44m', 'https://untitled.stream/library/project/l3wckbUigGGC4Id1GapgY') +
-                        createMusicCard('SAVE ME GOD', '15 tracks', '52m 53s', 'https://untitled.stream/library/project/90p9s5Y8uneuqVrPGNDAM') +
-                        createMusicCard('YEEZUS 2', '13 tracks', '56m 52s', 'https://untitled.stream/library/project/GfJrB0KLLlr4N7rSxMssc') +
-                        createMusicCard('GOOD A JOB*', '18 tracks', '1h 19m', 'https://untitled.stream/library/project/sEJCgq1DEtUgGMNDxnbuA') +
-                        createMusicCard('SO HELP ME GOD', '10 tracks', '35m 39s', 'https://untitled.stream/library/project/kWehVkoYhtJ0aOVtZpDIg') +
-                        createMusicCard('WATCH THE FLAMES', '12 tracks', '51m 5s', 'https://untitled.stream/library/project/3kE7C4VCdSR2tfDQMMv18') +
-                        createMusicCard('WATCH THE THRONE 2', '11 tracks', '34m 25s', 'https://untitled.stream/library/project/2j7QPD656SnIGZ3SfchF3') +
-                        createMusicCard('ALL HALLOWS EVE DELUXE', '21 tracks', '1h 28m', 'https://untitled.stream/library/project/s18s1Nj0udxUvCQskxjnc') +
-                        createMusicCard('ALL HALLOWS EVE', '16 tracks', '1h 8m', 'https://untitled.stream/library/project/9kCmFKb3iWKF99cFMl2uz') +
-                        createMusicCard('MBDTF DELUXE', '25 tracks', '1h 45m', 'https://untitled.stream/library/project/VoxXW8iioQkfrpbqN5K0A') +
-                        createMusicCard('YE', '14 tracks', '44m 29s', 'https://untitled.stream/library/project/eCMQtVt5dKihqutHt85gQ') +
-                        createMusicCard('CARTI YE', '14 tracks', '34m 38s', 'https://untitled.stream/library/project/jZSHZHORLjhuSnZy3G0JA') +
-                        createMusicCard('YEBU', '14 tracks', '33m 47s', 'https://untitled.stream/library/project/t6eCBccrSbv7sdANzGMZ9') +
-                        createMusicCard('WAR', '10 tracks', '26m 53s', 'https://untitled.stream/library/project/gjLjksokuAyVRyZmXY4og') +
-                    '</div>' +
-                '</div>' +
-                
-                '<div class="category">' +
-                    '<div class="category-header">' +
-                        '<div class="category-icon" style="background: linear-gradient(135deg, #ff6b6b, #ffd93b);"><i class="ri-folder-music-line cat-icon-white"></i></div>' +
-                        '<h3>Archive Folders</h3>' +
-                    '</div>' +
-                    '<div class="music-grid">' +
-                        createMusicCard('KANYE MEGATHREAD', 'Full archive', 'MEGA', 'https://mega.nz/folder/Y4A1mKRA#2BshAph7jOKavSew7rkaBQ') +
-                        createMusicCard('TYLER, THE CREATOR IGOR ALT VERSIONS', '12 tracks', '57m 5s', 'https://drive.google.com/drive/folders/1cdRnxfgnap4nQ4yq4Cw4pAiOXmOr9p0u') +
-                        createMusicCard('(OG) IGOR', '14 tracks', '1h 14m', 'https://untitled.stream/library/project/5V8BYQxpjoYR0HAMJIzmR') +
-                        createMusicCard('CMIYGL (OG)', '11 tracks', '1h 9m', 'https://untitled.stream/library/project/LnwXPmM0NUPvCKwPMUjsk') +
-                        createMusicCard('FLOWER BOY: THE OUTTAKES', '12 tracks', '28m 34s', 'https://untitled.stream/library/project/3KyKD3jANwaznTqImTVwn') +
-                        createMusicCard('TYLER FOLDER', '28 albums', 'Full Collection', 'https://untitled.stream/library/folder/sbybJSTQjv19a6CUheNAO') +
+                    '<div class="music-player-body">' +
+                        '<div class="music-progress-container">' +
+                            '<div class="music-progress-bar" id="progressBar">' +
+                                '<div class="music-progress-fill" id="progressFill"></div>' +
+                                '<div class="music-progress-handle" id="progressHandle"></div>' +
+                            '</div>' +
+                            '<div class="music-time">' +
+                                '<span id="currentTime">0:00</span>' +
+                                '<span id="totalTime">0:00</span>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="music-volume-container">' +
+                            '<i class="ri-volume-down-line"></i>' +
+                            '<div class="music-volume-slider" id="volumeSlider">' +
+                                '<div class="music-volume-fill" id="volumeFill"></div>' +
+                            '</div>' +
+                            '<i class="ri-volume-up-line"></i>' +
+                        '</div>' +
+                        '<div class="music-search-box">' +
+                            '<input type="text" class="music-search-input" id="musicSearchInput" placeholder="Search for songs, artists...">' +
+                            '<button class="music-search-btn" onclick="searchMusic(document.getElementById(\'musicSearchInput\').value)">' +
+                                '<i class="ri-search-line"></i> Search' +
+                            '</button>' +
+                        '</div>' +
+                        '<div class="music-playlist" id="musicPlaylist"></div>' +
                     '</div>' +
                 '</div>';
+            
+            renderMusicPlaylist();
+            
+            // Add event listeners for progress bar and volume
+            setTimeout(() => {
+                const progressBar = document.getElementById('progressBar');
+                const volumeSlider = document.getElementById('volumeSlider');
+                
+                if (progressBar) {
+                    progressBar.addEventListener('click', function(e) {
+                        const rect = this.getBoundingClientRect();
+                        const percent = (e.clientX - rect.left) / rect.width;
+                        if (youtubePlayer && youtubePlayer.seekTo) {
+                            const duration = youtubePlayer.getDuration();
+                            youtubePlayer.seekTo(duration * percent, true);
+                        }
+                    });
+                }
+                
+                if (volumeSlider) {
+                    volumeSlider.addEventListener('click', function(e) {
+                        const rect = this.getBoundingClientRect();
+                        const percent = (e.clientX - rect.left) / rect.width;
+                        document.getElementById('volumeFill').style.width = (percent * 100) + '%';
+                        if (youtubePlayer && youtubePlayer.setVolume) {
+                            youtubePlayer.setVolume(percent * 100);
+                        }
+                    });
+                }
+                
+                // Update progress bar
+                setInterval(() => {
+                    if (youtubePlayer && youtubePlayer.getCurrentTime && isPlaying) {
+                        const current = youtubePlayer.getCurrentTime();
+                        const duration = youtubePlayer.getDuration();
+                        if (duration > 0) {
+                            const percent = (current / duration) * 100;
+                            document.getElementById('progressFill').style.width = percent + '%';
+                            document.getElementById('progressHandle').style.left = percent + '%';
+                            document.getElementById('currentTime').textContent = formatTime(current);
+                            document.getElementById('totalTime').textContent = formatTime(duration);
+                        }
+                    }
+                }, 1000);
+            }, 100);
+        }
+
+        function formatTime(seconds) {
+            if (!seconds || isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        function renderMusicPlaylist() {
+            const playlist = document.getElementById('musicPlaylist');
+            if (!playlist) return;
+            
+            let html = '';
+            currentPlaylist.forEach((track, index) => {
+                html += `
+                    <div class="music-track ${index === currentTrackIndex ? 'active' : ''}" onclick="playTrack(${index})">
+                        <div class="music-track-number">${index + 1}</div>
+                        <div class="music-track-info">
+                            <div class="music-track-title">${track.title}</div>
+                            <div class="music-track-artist">${track.artist}</div>
+                        </div>
+                        <div class="music-track-duration">${track.duration}</div>
+                        <div class="music-track-play">
+                            <i class="${index === currentTrackIndex && isPlaying ? 'ri-pause-fill' : 'ri-play-fill'}"></i>
+                        </div>
+                    </div>
+                `;
+            });
+            playlist.innerHTML = html;
         }
 
         function createAICard(title, url) {
@@ -3061,22 +3783,6 @@
         function updateStatus(type, message) {
             var status = document.getElementById('apiStatus');
             status.innerHTML = '<i class="ri-' + (type === 'active' ? 'wifi' : 'loader-4-line') + '"></i><span>' + message + '</span>';
-        }
-
-        function refreshData() {
-            if (currentSection === 'movies') {
-                if (isSearchResults && lastSearchQuery) {
-                    performSearch(lastSearchQuery);
-                } else {
-                    showSection('movies');
-                }
-            } else if (currentSection === 'tv') {
-                if (isSearchResults && lastSearchQuery) {
-                    performSearch(lastSearchQuery);
-                } else {
-                    showSection('tv');
-                }
-            }
         }
 
         window.onbeforeunload = function() {
